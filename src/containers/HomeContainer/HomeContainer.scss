@@ -1,0 +1,28 @@
+.home {
+	display: flex;
+	height: 100vh;
+	background-color: #f6f6f6;
+	position: relative;
+
+	&__left {
+		padding: 16rem 0 19rem 11rem;
+	}
+
+	&__heading {
+		font-size: 6.8rem;
+		font-family: 'Montserrat', sans-serif;
+	}
+	&__paragraph {
+		font-size: 2.4rem;
+		font-weight: 300;
+		font-family: 'Poppins', sans-serif;
+		margin: 2rem 0 4rem;
+	}
+	&__img {
+		width: 65rem;
+		height: 36rem;
+		position: absolute;
+		top: 13rem;
+		left: 65rem;
+	}
+}

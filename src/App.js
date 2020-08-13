@@ -1,10 +1,13 @@
 import React from 'react';
-import './App.css';
+import Layout from './hoc/Layout/Layout';
+import HomeContainer from './containers/HomeContainer/HomeContainer';
 
 function App() {
 	return (
 		<div className="App">
-			<h1>reviewer-app</h1>
+			<Layout>
+				<HomeContainer />
+			</Layout>
 		</div>
 	);
 }
