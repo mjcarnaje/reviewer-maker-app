@@ -1,0 +1,45 @@
+.buildQuestion-container {
+	width: 85%;
+	margin: 2rem auto;
+	background-color: #f7f7f7;
+	padding: 1.5rem 8rem;
+	border-radius: 1rem;
+	position: relative;
+
+	&__counter {
+		font-family: 'Berkshire Swash', sans-serif;
+		font-size: 1.5rem;
+		position: absolute;
+		left: 2.5rem;
+		top: 1.4rem;
+		background-color: #82a4f3;
+		color: white;
+		width: 3rem;
+		text-align: center;
+		padding-bottom: 5px;
+		border-radius: 3px;
+	}
+	&__remove {
+		position: absolute;
+		right: 2.5rem;
+		top: 1.4rem;
+	}
+}
+
+.buildQuestion {
+	font-family: 'Poppins', sans-serif;
+
+	&__question {
+		font-weight: 300;
+		font-size: 1.6rem;
+	}
+	&__answer {
+		margin-top: 1.6rem;
+		font-weight: 300;
+		font-size: 1.6rem;
+	}
+	&__span {
+		font-weight: 500;
+		margin-right: 5px;
+	}
+}

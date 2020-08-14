@@ -9,7 +9,7 @@ class Layout extends Component {
 			<Auxiliary>
 				<div className="layout">
 					<ToolBar />
-					<main classNme="layout__content">{this.props.children}</main>
+					<main className="layout__content">{this.props.children}</main>
 				</div>
 			</Auxiliary>
 		);

@@ -1,0 +1,14 @@
+.questions-container {
+	width: 100%;
+	padding: 12rem 27rem;
+	background-color: white;
+}
+.question {
+	&__heading {
+		color: black;
+		font-family: 'Poppins', sans-serif;
+		font-weight: 300;
+		font-size: 4rem;
+		padding-bottom: 1.5rem;
+	}
+}
