@@ -1,15 +1,17 @@
-import React from 'react';
+import React from "react";
 
-import NavigationItem from './Item/Item';
+import NavigationItem from "./Item/Item";
 
 const navigationItems = (props) => (
-	<ul className="m-0 p-0 flex list-none">
-		<NavigationItem link="#" active>
-			Home
-		</NavigationItem>
-		<NavigationItem link="#">Play</NavigationItem>
-		<NavigationItem link="#">Questions</NavigationItem>
-	</ul>
+  <div className="w-full hidden flex-grow lg:flex lg:items-center lg:w-auto text-2.5xl justify-end">
+    <NavigationItem link="#" active>
+      Home
+    </NavigationItem>
+    <NavigationItem link="#">Play</NavigationItem>
+    <NavigationItem link="#" last>
+      Questions
+    </NavigationItem>
+  </div>
 );
 
 export default navigationItems;

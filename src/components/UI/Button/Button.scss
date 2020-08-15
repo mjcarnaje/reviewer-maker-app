@@ -1,7 +1,6 @@
 .btn {
   display: block;
   font: inherit;
-  margin: 0 1rem;
   cursor: pointer;
   outline: none;
   color: var(--color-white);
@@ -27,4 +26,8 @@
       transform: translateY(1px);
     }
   }
+}
+
+.height {
+  height: calc(100vh - 60px);
 }

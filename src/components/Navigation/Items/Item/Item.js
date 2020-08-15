@@ -1,17 +1,20 @@
 import React from "react";
 
-const navigationItem = (props) => (
-  <li className="flex-1 items-center mr-20">
-    <a
-      href={props.link}
-      className={
-        props.active
-          ? "no-underline h-full text-2.5xl px-4 py-0 font-poppins bg-custom-primary rounded text-white"
-          : "no-underline h-full text-2.5xl px-4 py-0 font-poppins hover:bg-custom-primary hover:text-white hover:rounded"
-      }
-    >
+const navigationItem = (props) => {
+  const classesConstant = "block lg:inline-block px-4 py-0 font-poppins";
+  let classes;
+  if (props.active) {
+    classes = `${classesConstant} bg-custom-primary rounded text-white mr-20`;
+  } else if (props.last) {
+    classes = `${classesConstant} hover:bg-custom-primary hover:text-white hover:rounded`;
+  } else {
+    classes = `${classesConstant} hover:bg-custom-primary hover:text-white hover:rounded mr-20`;
+  }
+
+  return (
+    <a href={props.link} className={classes}>
       {props.children}
     </a>
-  </li>
-);
+  );
+};
 export default navigationItem;
