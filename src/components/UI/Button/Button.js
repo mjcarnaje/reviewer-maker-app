@@ -1,11 +1,11 @@
 import React from 'react';
 
-import styles from './Button.module.scss';
+import './Button.scss';
 
 const button = ({ classes, clicked, disable, children }) => {
 	const name = classes
 		.split(' ')
-		.map((el) => styles[el])
+		.map((el) => el)
 		.join(' ');
 
 	return (
