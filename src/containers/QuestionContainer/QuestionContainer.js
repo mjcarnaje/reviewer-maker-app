@@ -13,6 +13,19 @@ class QuestionContainer extends Component {
 					<BuildQuestion
 						question={'Who is the author of the manga called "One Piece"'}
 						answer={'Eiichiro Oda'}
+						count={'1'}
+					/>
+					<BuildQuestion
+						question={'What is the most beautiful city in the USA'}
+						answer={'San Fransico'}
+						count={'2'}
+
+					/>
+					<BuildQuestion
+						question={'Who is the best basketball player in the World'}
+						answer={'Michael Jordan'}
+						count={'3'}
+
 					/>
 				</div>
 			</Auxiliary>

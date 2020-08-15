@@ -1,10 +1,8 @@
 import React from 'react';
-
-import './Choices.scss';
 import Choice from './Choice/Choice';
 
 const choices = (props) => (
-	<div className="choices-container">
+	<div className=" my-4 pl-4">
 		<Choice>JYP</Choice>
 		<Choice>Naruto</Choice>
 		<Choice>Eiichiro Oda</Choice>
