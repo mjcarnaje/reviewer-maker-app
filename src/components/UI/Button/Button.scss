@@ -1,4 +1,4 @@
-.btn {
+.btdn {
   display: block;
   font: inherit;
   cursor: pointer;
@@ -26,8 +26,4 @@
       transform: translateY(1px);
     }
   }
-}
-
-.height {
-  height: calc(100vh - 60px);
 }

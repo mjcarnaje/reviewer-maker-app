@@ -3,16 +3,27 @@
 *,
 *::before,
 *::after {
-	padding: 0;
-	margin: 0;
-	box-sizing: inherit;
+  padding: 0;
+  margin: 0;
+  box-sizing: inherit;
 }
 
 html {
-	font-size: 62.5%;
+  font-size: 62.5%;
 }
 
 body {
-	box-sizing: border-box;
-	font-family: sans-serif;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+.height {
+  height: calc(100vh - 60px);
+}
+
+.btn {
+  @apply inline-block;
+  @apply text-custom-primary;
+  @apply outline-none;
+  @apply font-poppins;
+  @apply border-0;
 }

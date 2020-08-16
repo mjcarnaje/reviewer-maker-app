@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import "./HomeContainer.scss";
 
 import Auxiliary from "../../hoc/Auxiliary";
 import image01 from "../../assets/svg/image.svg";
@@ -17,8 +16,12 @@ class HomeContainer extends Component {
             <p className=" text-4xl font-light font-poppins lg:-mt-24 -mt-20 md:mt-0">
               Make your own question and practice, for free.
             </p>
+            <button className="btn bg-custom-primary text-4xl font-poppins text-white font-medium py-4 px-12 rounded-lg focus:outline-none active:bg-indigo-600 hover:bg-indigo-400 hover:-translate-y-px active:translate-y-px ">
+              {" "}
+              Get Started{" "}
+            </button>
             <div className="">
-              <Button classes="btn btn--home">Get started</Button>
+              <Button classes="btdn btdn--home">Get started</Button>
             </div>
           </div>
           <div className="flex-1 h-screen w-full flex justify-center align-middle ">
