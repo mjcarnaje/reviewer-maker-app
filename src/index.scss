@@ -19,11 +19,8 @@ body {
 .height {
   height: calc(100vh - 60px);
 }
-
 .btn {
-  @apply inline-block;
-  @apply text-custom-primary;
-  @apply outline-none;
-  @apply font-poppins;
-  @apply border-0;
+  display: inline-block;
+  outline: none;
+  border: none;
 }
