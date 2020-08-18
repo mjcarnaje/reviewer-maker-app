@@ -7,18 +7,18 @@ import Questions from "../../components/Questions/Questions";
 class QuestionContainer extends Component {
   state = {
     items: [
-      // {
-      //   id: "1",
-      //   question:
-      //     "Who is the best teacher in the world of programming in Youtube?",
-      //   choices: [
-      //     "Traversy Media",
-      //     "Simplified Dev",
-      //     "Design Course",
-      //     "Dennis Ivy",
-      //   ],
-      //   answer: "Traversy Media",
-      // },
+      {
+        id: "1",
+        question:
+          "Who is the best teacher in the world of programming in Youtube?",
+        choices: [
+          "Traversy Media",
+          "Simplified Dev",
+          "Design Course",
+          "Dennis Ivy",
+        ],
+        answer: "Traversy Media",
+      },
       // {
       //   id: "2",
       //   question:
@@ -40,29 +40,36 @@ class QuestionContainer extends Component {
     },
   };
 
-  componentDidMount() {
+  componentDidUpdate() {
     console.log(this.state.currentItem);
     console.log(this.state.items);
   }
   questionInputChanged = (e) => {
-    let currentAnswer = this.state.currentItem.answer.slice();
     this.setState({
       currentItem: {
-        id: this.state.items.length + 1,
+        ...this.state.currentItem,
         question: e.target.value,
-        answer: currentAnswer,
       },
     });
   };
   answerInputChanged = (e) => {
-    let currentQuestion = this.state.currentItem.question.slice();
     this.setState({
       currentItem: {
-        id: this.state.items.length + 1,
-        question: currentQuestion,
+        ...this.state.currentItem,
         answer: e.target.value,
       },
     });
+  };
+  choiceChanged = (e) => {
+    this.setState({
+      currentItem: {
+        ...this.state.currentItem,
+        choices: e.target.value,
+      },
+    });
+  };
+  addButtonClicked = () => {
+    console.log("Add Button is clicked");
   };
 
   render() {
@@ -79,10 +86,9 @@ class QuestionContainer extends Component {
             questions={this.state.currentItem}
             questionChanged={this.questionInputChanged}
             answerChanged={this.answerInputChanged}
-            choiceChanged={this.choiceChanged}
           />
 
-          <AddButton clicked={null} />
+          <AddButton clicked={this.addButtonClicked} />
         </div>
       </Auxiliary>
     );

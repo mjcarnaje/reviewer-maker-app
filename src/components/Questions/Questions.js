@@ -2,7 +2,12 @@ import React from "react";
 import BuildQuestion from "./Question/Question";
 import Auxiliary from "../../hoc/Auxiliary";
 
-const questions = ({ questions, questionChanged, answerChanged }) => {
+const questions = ({
+  questions,
+  questionChanged,
+  answerChanged,
+  choiceChanged,
+}) => {
   console.log(questions.length);
   return (
     <Auxiliary>
@@ -16,6 +21,7 @@ const questions = ({ questions, questionChanged, answerChanged }) => {
           items={questions}
           questionChanged={questionChanged}
           answerChanged={answerChanged}
+          choiceChanged={choiceChanged}
         />
       )}
     </Auxiliary>

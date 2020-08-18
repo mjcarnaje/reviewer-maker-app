@@ -2,10 +2,13 @@ import React from "react";
 
 const AddButton = (props) => (
   <div className="flex items-center mt-8 ml-32">
-    <button className="focus:outline-none">
+    <button
+      className="focus:outline-none cursor-pointer w-16 h-16"
+      onClick={props.clicked}
+    >
       <svg
         viewBox="0 0 20 20"
-        className="plus-circle w-16 h-16 text-custom-primary fill-current cursor-pointer"
+        className="plus-circle w-full h-full text-custom-primary fill-current hover:text-indigo-400"
       >
         <path
           fillRule="evenodd"
