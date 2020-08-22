@@ -2,12 +2,6 @@ import React from "react";
 import Choice from "./Choice/Choice";
 
 const choices = (props) => {
-  // const handleKeyDown = (e) => {
-  //   if (e.key === "Enter") {
-  //     console.log("Enter key is pressed");
-  //   }
-  // };
-
   let choicesToRender;
   if (props.choices) {
     choicesToRender = props.choices.map((choice, index) => {

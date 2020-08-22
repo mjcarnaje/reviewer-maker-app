@@ -1,5 +1,25 @@
-@import "tailwindcss/base";
+@import 'tailwindcss/base';
 
-@import "tailwindcss/components";
+@import 'tailwindcss/components';
 
-@import "tailwindcss/utilities";
+.height {
+	height: calc(100vh - 60px);
+}
+.btn {
+	display: inline-block;
+	outline: none;
+	border: none;
+}
+.bd {
+	backdrop-filter: blur(0.1px);
+}
+.center {
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+}
+.trans {
+	transition: all 0.4s;
+}
+
+@import 'tailwindcss/utilities';

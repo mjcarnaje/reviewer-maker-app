@@ -605,6 +605,31 @@ video {
   }
 }
 
+.height {
+  height: calc(100vh - 60px);
+}
+
+.btn {
+  display: inline-block;
+  outline: none;
+  border: none;
+}
+
+.bd {
+  -webkit-backdrop-filter: blur(0.1px);
+          backdrop-filter: blur(0.1px);
+}
+
+.center {
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.trans {
+  transition: all 0.4s;
+}
+
 .space-y-0 > :not(template) ~ :not(template) {
   --space-y-reverse: 0;
   margin-top: calc(0px * calc(1 - var(--space-y-reverse)));
