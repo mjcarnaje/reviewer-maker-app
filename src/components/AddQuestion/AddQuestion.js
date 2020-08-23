@@ -75,7 +75,7 @@ class addQuestion extends Component {
 			Choices = otherChoices.map((el, index) => {
 				return (
 					<input
-						className='text-2xl border-b-2 outline-none w-full my-4'
+						className='block w-full py-1 mx-auto my-0 text-lg border-b-2 focus:outline-none'
 						type='text'
 						placeholder='Type the other choice...'
 						value={el}
@@ -90,29 +90,31 @@ class addQuestion extends Component {
 
 		return (
 			<Auxiliary>
-				<div className='py-6 px-16 w-full flex flex-col'>
-					<div className='mb-4'>
-						<span className='block font-poppins text-2xl text-custom-primary -ml-8'>
+				<div className=' w-85vw sm:w-70vw md:w-60vh'>
+					<div className=''>
+						<span className='block text-2.5xl font-poppins text-custom-primary'>
 							Question:
 						</span>
-						<input
-							className='text-3xl border-b-2 outline-none w-full'
-							type='text'
-							placeholder='Type your question...'
-							value={this.state.inputQuestion}
-							onChange={this.questionChanged}
-						/>
+						<div className='text-center'>
+							<input
+								className='block w-full text-xl border-b-2 focus:outline-none'
+								type='text'
+								placeholder='Type your question...'
+								value={this.state.inputQuestion}
+								onChange={this.questionChanged}
+							/>
+						</div>
 					</div>
-					<div className=' px-16 flex flex-col'>
-						<p className='block font-poppins text-2xl text-custom-primary -ml-16 '>
+					<div className='clearfix py-3'>
+						<p className='text-2.5xl font-poppins text-custom-primary'>
 							Choices:
-							<span className='text-xl ml-4'>
+							<span className='pl-2 text-sm'>
 								(type the answer to the answer section)
 							</span>
 						</p>
-						<div>
+						<div className='block w-10/12 mx-auto my-1'>
 							<input
-								className='text-2xl border-b-2 outline-none w-full my-4 font-semibold '
+								className='block w-full py-1 mx-auto my-0 text-lg font-semibold border-b-2 focus:outline-none'
 								type='text'
 								placeholder='Type the answer here...'
 								value={this.state.inputCorrentAns}
@@ -120,7 +122,7 @@ class addQuestion extends Component {
 							/>
 							{Choices}
 							<input
-								className='text-2xl border-b-2 outline-none w-full my-4'
+								className='block w-full py-1 mx-auto my-0 text-lg border-b-2 focus:outline-none'
 								type='text'
 								placeholder='Type the other choice...'
 								value={this.state.inputCurrentChoice}
@@ -129,13 +131,13 @@ class addQuestion extends Component {
 						</div>
 						<button
 							onClick={this.addChoiceClicked}
-							className='block self-end py-2 px-3 font-poppins text-custom-primary hover:text-white font-medium text-lg border-2 border-custom-primary hover:bg-custom-primary rounded'>
-							+ Add Choice/s
+							className='float-right px-3 py-2 my-1 text-xs text-white rounded font-poppins bg-custom-primary focus:outline-none hover:bg-indigo-400'>
+							+ Other choice
 						</button>
 					</div>
 					<button
 						onClick={this.handleSumbit}
-						className='self-end bg-custom-primary text-white font-poppins text-2xl py-2 px-10 rounded-full hover:bg-indigo-400 mt-5'>
+						className='block px-4 py-2 mx-auto my-1 text-base text-white rounded-full bg-custom-primary font-poppins focus:outline-none hover:bg-indigo-500'>
 						Submit
 					</button>
 				</div>

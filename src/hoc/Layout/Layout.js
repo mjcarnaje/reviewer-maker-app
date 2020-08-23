@@ -1,19 +1,19 @@
-import React, { Component } from "react";
-import Auxiliary from "../Auxiliary";
-import "./Layout.scss";
-import ToolBar from "../../components/Navigation/Toolbar/Toolbar";
+import React, { Component } from 'react';
+import Auxiliary from '../Auxiliary';
+import './Layout.scss';
+import Navigation from '../../components/Navigation/Navigation';
 
 class Layout extends Component {
-  render() {
-    return (
-      <Auxiliary>
-        <div>
-          <ToolBar />
-          <main>{this.props.children}</main>
-        </div>
-      </Auxiliary>
-    );
-  }
+	render() {
+		return (
+			<Auxiliary>
+				<div className='relative'>
+					<Navigation />
+					<main className='bg-indigo-100'>{this.props.children}</main>
+				</div>
+			</Auxiliary>
+		);
+	}
 }
 
 export default Layout;

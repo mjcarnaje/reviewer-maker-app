@@ -1,25 +1,31 @@
-import React from "react";
-import NavigationItems from "../Items/Items";
+import React from 'react';
 
 const toolBar = (props) => (
-  <nav className="w-full h-24 fixed top-0 left-0 lg:px-20 md:px-12 px-10 py-0 z-100 border-b border-gray-300 flex bg-white">
-    <h1 className="flex items-center flex-shrink-0 mr-10 font-berkshire text-5xl font-hairline text-custom-primary flex-grow lg:flex-grow-0">
-      ReviewerMaker
-    </h1>
-    <div className="flex lg:hidden justify-end">
-      <button className="flex items-center py-2 text-custom-primary border-custom-primary-400">
-        <svg
-          className="fill-current h-12 w-12"
-          viewBox="0 0 20 20"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <title>Menu</title>
-          <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
-        </svg>
-      </button>
-    </div>
-    <NavigationItems />
-  </nav>
+	<nav className='flex items-center justify-center px-4 py-3 shadow sm:p-0 sm:shadow-none'>
+		<h1 className='flex-1 text-3xl font-berkshire text-custom-primary'>
+			ReviewerMaker
+		</h1>
+		<div className='sm:hidden'>
+			<button
+				className='text-custom-primary focus:text-indigo-400 focus:outline-none'
+				onClick={props.drawerToggleClicked}>
+				<svg viewBox='0 0 20 20' className='w-10 h-10 fill-current'>
+					{props.close ? (
+						<path
+							fillRule='evenodd'
+							d='M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z'
+							clipRule='evenodd'></path>
+					) : (
+						<path
+							fillRule='evenodd'
+							d='M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM9 15a1 1 0 011-1h6a1 1 0 110 2h-6a1 1 0 01-1-1z'
+							clipRule='evenodd'
+						/>
+					)}
+				</svg>
+			</button>
+		</div>
+	</nav>
 );
 
 export default toolBar;

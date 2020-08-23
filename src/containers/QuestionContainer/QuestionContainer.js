@@ -8,8 +8,21 @@ import AddQuestion from '../../components/AddQuestion/AddQuestion';
 import Modal from '../../components/UI/Modal/Modal';
 class QuestionContainer extends Component {
 	state = {
-		items: [],
-		addQuestion: false,
+		items: [
+			{
+				id: '1',
+				question:
+					'Who is the best teacher in the world of programming in Youtube?',
+				choices: [
+					'Traversy Media',
+					'Simplified Dev',
+					'Design Course',
+					'Dennis Ivy',
+				],
+				answer: 'Traversy Media',
+			},
+		],
+		addQuestion: true,
 	};
 	addNewQuestion = (currentQuestion) => {
 		const newArray = [...this.state.items];
@@ -60,8 +73,8 @@ class QuestionContainer extends Component {
 						modalClosed={this.addQuestionExit}
 					/>
 				</Modal>
-				<div className='flex flex-col py-48 w-8/12 mx-auto'>
-					<h1 className=' font-poppins text-6xl pb-6 text-black font-light'>
+				<div className='min-h-screen px-3 py-24 sm:px-10 md:px-24 lg:px-large'>
+					<h1 className='text-3xl font-semibold text-gray-800 font-poppins'>
 						Create Your Questions:
 					</h1>
 					{this.state.items.length !== 0 ? (

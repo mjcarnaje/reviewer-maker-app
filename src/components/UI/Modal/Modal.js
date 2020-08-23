@@ -7,7 +7,7 @@ const modal = (props) => {
 		<Auxiliary>
 			<Backdrop show={props.show} clicked={props.modalClosed} />
 			<div
-				className=' z-200 bg-white shadow-md p-6 fixed center trans rounded-md opacity-0'
+				className='fixed p-6 bg-white rounded-md shadow-md opacity-0  z-200 center trans'
 				style={{
 					transform: props.show
 						? 'translate(-50%, -50%)'

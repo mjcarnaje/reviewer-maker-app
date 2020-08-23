@@ -1,37 +1,39 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 
-import Auxiliary from "../../hoc/Auxiliary";
-import image01 from "../../assets/svg/image.svg";
+import Auxiliary from '../../hoc/Auxiliary';
+import image01 from '../../assets/svg/studying.svg';
 
 class HomeContainer extends Component {
-  render() {
-    return (
-      <Auxiliary>
-        <div className="flex md:flex-row flex-col md:height w-full bg-gray-100 pt-24">
-          <div className=" flex flex-col md:flex-1 md:pl-40 pl-8 md:py-40 py-8 md:justify-between justify-evenly height">
-            <h1 className=" text-7xl sm:text-9xl leading-none font-montserrat font-light pt-12">
-              All-in-one online reviewer app maker
-            </h1>
-            <p className=" text-4xl font-light font-poppins pb-32">
-              Make your own question and practice, for free.
-            </p>
-            <div>
-              <button className=" outline-none border-0 block bg-custom-primary text-4xl font-poppins text-white font-medium py-4 px-12 rounded-lg focus:outline-none active:bg-indigo-600 hover:bg-indigo-400">
-                Get Started
-              </button>
-            </div>
-          </div>
-          <div className="flex-1 h-screen w-full flex justify-center align-middle ">
-            <img
-              className=" w-full md:w-10/12 lg:w-full h-auto "
-              src={image01}
-              alt="male-study"
-            />
-          </div>
-        </div>
-      </Auxiliary>
-    );
-  }
+	render() {
+		return (
+			<Auxiliary>
+				<div className='relative px-3 sm:px-6 md:px-24 lg:px-16 lg:flex'>
+					<div className='flex flex-col justify-center min-h-screen'>
+						<div>
+							<h1 className='my-6 text-5xl font-semibold leading-tight text-gray-800 sm:text-6xl font-poppins'>
+								All-in-one online reviewer app maker
+							</h1>
+							<p className='text-xl font-light leading-none font-poppins sm:text-2xl'>
+								Make your own question and practice, for free.
+							</p>
+						</div>
+						<div className='mt-16'>
+							<button className='block px-3 py-2 text-xl text-white border-none rounded sm:text-2xl font-poppins bg-custom-primary hover:bg-indigo-400 focus:outline-none'>
+								Get Started
+							</button>
+						</div>
+					</div>
+					<div className='absolute bottom-0 right-0 w-2/3 sm:relative sm:w-auto sm:px-10 sm:m-0 lg:w-full lg:h-auto'>
+						<img
+							className='lg:w-full lg:h-full '
+							src={image01}
+							alt='male-study'
+						/>
+					</div>
+				</div>
+			</Auxiliary>
+		);
+	}
 }
 
 export default HomeContainer;

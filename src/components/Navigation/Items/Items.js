@@ -1,17 +1,29 @@
-import React from "react";
+import React from 'react';
 
-import NavigationItem from "./Item/Item";
+import NavigationItem from './Item/Item';
 
-const navigationItems = (props) => (
-  <div className="w-full hidden flex-grow lg:flex lg:items-center lg:w-auto text-2.5xl justify-end">
-    <NavigationItem link="#" active>
-      Home
-    </NavigationItem>
-    <NavigationItem link="#">Play</NavigationItem>
-    <NavigationItem link="#" last>
-      Questions
-    </NavigationItem>
-  </div>
-);
+const navigationItems = (props) => {
+	let classes;
+	if (props.open) {
+		classes = 'block px-2 pt-2 pb-4';
+	} else {
+		classes = 'hidden px-2 pt-2 pb-4';
+	}
+
+	return (
+		<div
+			className={`${classes} sm:flex sm:justify-center sm:items-center sm:p-0`}>
+			<NavigationItem link='#' active>
+				Home
+			</NavigationItem>
+			<NavigationItem link='#' center>
+				Play
+			</NavigationItem>
+			<NavigationItem link='#' last>
+				Questions
+			</NavigationItem>
+		</div>
+	);
+};
 
 export default navigationItems;

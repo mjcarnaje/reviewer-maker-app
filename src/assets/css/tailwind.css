@@ -2,8 +2,10 @@
 
 @import 'tailwindcss/components';
 
-.height {
-	height: calc(100vh - 60px);
+.modal-content {
+	width: 85vw;
+	@media only screen and (max-width: ) {
+	}
 }
 .btn {
 	display: inline-block;
