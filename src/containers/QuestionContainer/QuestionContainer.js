@@ -17,11 +17,11 @@ class QuestionContainer extends Component {
 				answer: 'Traversy Media',
 			},
 		],
-		currentItem: { id: '', question: '', choices: [], answer: '' },
+		currentItem: {},
 		editState: false,
 		addQuestion: false,
 	};
-	addNewQuestion = ({
+	updateQuestions = ({
 		inputQuestion,
 		inputCorrentAns,
 		inputCurrentChoice,
@@ -31,13 +31,12 @@ class QuestionContainer extends Component {
 		let newArray = [...this.state.items];
 		const questionID = nextId();
 		const elementIndex = this.state.items.findIndex((el) => el.id === id);
-
 		if (
 			inputQuestion !== '' &&
 			inputCorrentAns !== '' &&
 			inputCurrentChoice !== '' &&
 			choices !== [] &&
-			id === undefined
+			id === null
 		) {
 			newArray.push({
 				id: questionID,
@@ -101,7 +100,7 @@ class QuestionContainer extends Component {
 					<AddQuestion
 						currentItem={this.state.currentItem}
 						editState={this.state.editState}
-						sumbitItem={this.addNewQuestion}
+						sumbitItem={this.updateQuestions}
 						modalClosed={this.modalExit}
 					/>
 				</Modal>

@@ -8,6 +8,7 @@ const buildQuestion = ({
 	count,
 	edit,
 }) => {
+	const filteredChoices = choices.filter((el) => el);
 	return (
 		<div className='flex justify-between px-4 py-6 mx-2 my-4 bg-gray-100 rounded-lg sm:mx-4 md:mx-6'>
 			<div className='text-lg leading-none font-poppins'>
@@ -18,7 +19,7 @@ const buildQuestion = ({
 			<div className='flex-grow px-3 font-poppins'>
 				<span className='text-2.5xl font-light'>{question}</span>
 
-				<Choices choices={choices} />
+				<Choices choices={filteredChoices} />
 				<div className='flex items-center'>
 					<span className='mr-3 font-semibold'>Answer:</span>
 					<span className='text-xl font-light '>{answer}</span>

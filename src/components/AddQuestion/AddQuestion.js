@@ -3,9 +3,9 @@ import Auxiliary from '../../hoc/Auxiliary';
 
 class addQuestion extends Component {
 	state = {
-		id: this.props.currentItem.id,
-		inputQuestion: this.props.currentItem.question,
-		inputCorrentAns: this.props.currentItem.answer,
+		id: null,
+		inputQuestion: '',
+		inputCorrentAns: '',
 		choices: [],
 		inputCurrentChoice: '',
 	};
@@ -15,6 +15,9 @@ class addQuestion extends Component {
 			const choicesCopy = [...this.props.currentItem.choices];
 			const currentChoiceCopy = choicesCopy.pop();
 			this.setState({
+				id: this.props.currentItem.id,
+				inputQuestion: this.props.currentItem.question,
+				inputCorrentAns: this.props.currentItem.answer,
 				inputCurrentChoice: currentChoiceCopy,
 				choices: choicesCopy,
 			});
