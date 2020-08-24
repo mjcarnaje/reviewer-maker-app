@@ -3,9 +3,10 @@ import React from 'react';
 import Choices from './Choices/Choices';
 
 const buildQuestion = ({
-	items: { question, answer, choices },
+	items: { question, answer, choices, id },
 	del,
 	count,
+	edit,
 }) => {
 	return (
 		<div className='flex justify-between px-4 py-6 mx-2 my-4 bg-gray-100 rounded-lg sm:mx-4 md:mx-6'>
@@ -25,6 +26,7 @@ const buildQuestion = ({
 			</div>
 			<div className='flex'>
 				<svg
+					onClick={() => edit(id)}
 					viewBox='0 0 20 20'
 					className='w-6 h-6 mr-1 cursor-pointer fill-current pencil text-custom-primary'>
 					<path d='M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z'></path>

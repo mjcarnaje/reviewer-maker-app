@@ -2,25 +2,41 @@ import React, { Component } from 'react';
 import Auxiliary from '../../hoc/Auxiliary';
 
 class addQuestion extends Component {
-	constructor(props) {
-		super(props);
-		this.state = {
-			inputQuestion: '',
-			inputCurrentChoice: '',
-			inputCorrentAns: '',
-			choices: [],
-		};
-	}
-	handleSumbit = () => {
-		this.props.handleState(this.state);
-		this.props.modalClosed();
+	state = {
+		id: '',
+		inputQuestion: '',
+		inputCurrentChoice: '',
+		inputCorrentAns: '',
+		choices: [],
+	};
 
+	componentWillMount() {
+		if (this.props.editState) {
+			const { question, choices, answer, id } = this.props.editQuestion;
+			const choicesCopy = [...choices];
+			const currentChoiceCopy = choicesCopy.pop();
+
+			this.setState({
+				id: id,
+				inputQuestion: question,
+				inputCurrentChoice: currentChoiceCopy,
+				inputCorrentAns: answer,
+				choices: choicesCopy,
+			});
+		}
+	}
+
+	componentWillUnmount() {
 		this.setState({
 			inputQuestion: '',
 			inputCurrentChoice: '',
 			inputCorrentAns: '',
 			choices: [],
 		});
+	}
+	handleSumbit = () => {
+		this.props.handleState(this.state);
+		this.props.modalClosed();
 	};
 
 	questionChanged = (e) => {
@@ -137,8 +153,8 @@ class addQuestion extends Component {
 					</div>
 					<button
 						onClick={this.handleSumbit}
-						className='block px-4 py-2 mx-auto my-1 text-base text-white rounded-full bg-custom-primary font-poppins focus:outline-none hover:bg-indigo-500'>
-						Submit
+						className='block px-5 py-1 mx-auto my-1 text-base text-white rounded-full bg-custom-primary font-poppins focus:outline-none hover:bg-indigo-500'>
+						{this.props.editState ? 'Update' : 'Submit'}
 					</button>
 				</div>
 			</Auxiliary>
