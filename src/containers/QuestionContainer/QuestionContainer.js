@@ -17,7 +17,7 @@ class QuestionContainer extends Component {
 				answer: 'Traversy Media',
 			},
 		],
-		currentItems: [],
+		currentItem: { id: '', question: '', choices: [], answer: '' },
 		editState: false,
 		addQuestion: false,
 	};
@@ -37,7 +37,7 @@ class QuestionContainer extends Component {
 			inputCorrentAns !== '' &&
 			inputCurrentChoice !== '' &&
 			choices !== [] &&
-			id === ''
+			id === undefined
 		) {
 			newArray.push({
 				id: questionID,
@@ -67,11 +67,13 @@ class QuestionContainer extends Component {
 			editState: false,
 		});
 	};
+
 	deleteQuestion = (questionIndex) => {
 		const itemsCopy = [...this.state.items];
 		itemsCopy.splice(questionIndex, 1);
 		this.setState({ items: itemsCopy });
 	};
+
 	editQuestion = (questionID) => {
 		const itemsCopy = [...this.state.items];
 		const questionIndex = itemsCopy.findIndex((el) => questionID === el.id);
@@ -80,7 +82,7 @@ class QuestionContainer extends Component {
 		this.setState({
 			addQuestion: true,
 			editState: true,
-			currentItems: copy,
+			currentItem: copy,
 		});
 	};
 
@@ -89,7 +91,7 @@ class QuestionContainer extends Component {
 	};
 
 	modalExit = () => {
-		this.setState({ currentItems: [], addQuestion: false, editState: false });
+		this.setState({ currentItem: {}, addQuestion: false, editState: false });
 	};
 
 	render() {
@@ -97,9 +99,9 @@ class QuestionContainer extends Component {
 			<Auxiliary>
 				<Modal show={this.state.addQuestion} modalClosed={this.modalExit}>
 					<AddQuestion
+						currentItem={this.state.currentItem}
 						editState={this.state.editState}
-						editQuestion={this.state.currentItems}
-						handleState={this.addNewQuestion}
+						sumbitItem={this.addNewQuestion}
 						modalClosed={this.modalExit}
 					/>
 				</Modal>

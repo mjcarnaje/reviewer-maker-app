@@ -3,39 +3,25 @@ import Auxiliary from '../../hoc/Auxiliary';
 
 class addQuestion extends Component {
 	state = {
-		id: '',
-		inputQuestion: '',
-		inputCurrentChoice: '',
-		inputCorrentAns: '',
+		id: this.props.currentItem.id,
+		inputQuestion: this.props.currentItem.question,
+		inputCorrentAns: this.props.currentItem.answer,
 		choices: [],
+		inputCurrentChoice: '',
 	};
 
-	componentWillMount() {
+	UNSAFE_componentWillMount() {
 		if (this.props.editState) {
-			const { question, choices, answer, id } = this.props.editQuestion;
-			const choicesCopy = [...choices];
+			const choicesCopy = [...this.props.currentItem.choices];
 			const currentChoiceCopy = choicesCopy.pop();
-
 			this.setState({
-				id: id,
-				inputQuestion: question,
 				inputCurrentChoice: currentChoiceCopy,
-				inputCorrentAns: answer,
 				choices: choicesCopy,
 			});
 		}
 	}
-
-	componentWillUnmount() {
-		this.setState({
-			inputQuestion: '',
-			inputCurrentChoice: '',
-			inputCorrentAns: '',
-			choices: [],
-		});
-	}
 	handleSumbit = () => {
-		this.props.handleState(this.state);
+		this.props.sumbitItem(this.state);
 		this.props.modalClosed();
 	};
 
