@@ -4,61 +4,53 @@ import Auxiliary from '../../hoc/Auxiliary';
 class addQuestion extends Component {
 	state = {
 		id: null,
-		inputQuestion: '',
-		inputCorrentAns: '',
+		question: '',
+		correct: '',
 		choices: [],
-		inputCurrentChoice: '',
+		curChoice: '',
 	};
 
-	UNSAFE_componentWillMount() {
+	componentDidMount() {
 		if (this.props.editState) {
-			const choicesCopy = [...this.props.currentItem.choices];
-			const currentChoiceCopy = choicesCopy.pop();
+			const cur = this.props.currentItem;
+			const curChoices = [...cur.choices];
+			const curChoice = curChoices.pop();
+
 			this.setState({
-				id: this.props.currentItem.id,
-				inputQuestion: this.props.currentItem.question,
-				inputCorrentAns: this.props.currentItem.answer,
-				inputCurrentChoice: currentChoiceCopy,
-				choices: choicesCopy,
+				id: cur.id,
+				question: cur.question,
+				correct: cur.answer,
+				curChoice: curChoice,
+				choices: curChoices,
 			});
 		}
 	}
 	handleSumbit = () => {
-		this.props.sumbitItem(this.state);
-		this.props.modalClosed();
+		if (
+			this.state.question !== '' &&
+			this.state.correct !== '' &&
+			this.state.curChoice !== '' &&
+			this.state.choices !== []
+		) {
+			this.props.sumbitItem(this.state);
+		} else {
+			alert('Provide all the details');
+		}
 	};
 
-	questionChanged = (e) => {
-		this.setState({
-			...this.state,
-			inputQuestion: e.target.value,
-		});
-	};
-	answerChanged = (e) => {
-		this.setState({
-			...this.state,
-			inputCorrentAns: e.target.value,
-		});
-	};
-	choiceChanged = (e) => {
-		this.setState({
-			...this.state,
-			inputCurrentChoice: e.target.value,
-		});
-	};
 	addChoiceClicked = () => {
-		let otherChoicesCopy = this.state.choices.slice();
-		let currentChoice = this.state.inputCurrentChoice;
+		const choicesCopy = this.state.choices.slice();
+		const currentChoice = this.state.curChoice;
 		if (currentChoice !== '') {
-			otherChoicesCopy.push(currentChoice);
+			choicesCopy.push(currentChoice);
 		} else {
 			return;
 		}
 
 		this.setState({
 			...this.state,
-			choices: otherChoicesCopy,
-			inputCurrentChoice: '',
+			choices: choicesCopy,
+			curChoice: '',
 		});
 	};
 	choicesChanged = (e, text) => {
@@ -73,7 +65,7 @@ class addQuestion extends Component {
 		});
 	};
 	render() {
-		let otherChoices = this.state.choices;
+		const otherChoices = this.state.choices;
 		let Choices;
 
 		if (otherChoices.length > 0) {
@@ -105,8 +97,10 @@ class addQuestion extends Component {
 								className='block w-full text-xl border-b-2 focus:outline-none'
 								type='text'
 								placeholder='Type your question...'
-								value={this.state.inputQuestion}
-								onChange={this.questionChanged}
+								value={this.state.question}
+								onChange={(event) =>
+									this.setState({ question: event.target.value })
+								}
 							/>
 						</div>
 					</div>
@@ -122,16 +116,20 @@ class addQuestion extends Component {
 								className='block w-full py-1 mx-auto my-0 text-lg font-semibold border-b-2 focus:outline-none'
 								type='text'
 								placeholder='Type the answer here...'
-								value={this.state.inputCorrentAns}
-								onChange={this.answerChanged}
+								value={this.state.correct}
+								onChange={(event) =>
+									this.setState({ correct: event.target.value })
+								}
 							/>
 							{Choices}
 							<input
 								className='block w-full py-1 mx-auto my-0 text-lg border-b-2 focus:outline-none'
 								type='text'
 								placeholder='Type the other choice...'
-								value={this.state.inputCurrentChoice}
-								onChange={this.choiceChanged}
+								value={this.state.curChoice}
+								onChange={(event) =>
+									this.setState({ curChoice: event.target.value })
+								}
 							/>
 						</div>
 						<button

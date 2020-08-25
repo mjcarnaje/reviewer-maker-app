@@ -2,13 +2,8 @@ import React from 'react';
 
 import Choices from './Choices/Choices';
 
-const buildQuestion = ({
-	items: { question, answer, choices, id },
-	del,
-	count,
-	edit,
-}) => {
-	const filteredChoices = choices.filter((el) => el);
+const buildQuestion = ({ items, del, count, edit }) => {
+	const filteredChoices = items.choices.filter((el) => el);
 	return (
 		<div className='flex justify-between px-4 py-6 mx-2 my-4 bg-gray-100 rounded-lg sm:mx-4 md:mx-6'>
 			<div className='text-lg leading-none font-poppins'>
@@ -17,17 +12,16 @@ const buildQuestion = ({
 				</div>
 			</div>
 			<div className='flex-grow px-3 font-poppins'>
-				<span className='text-2.5xl font-light'>{question}</span>
-
+				<span className='text-2.5xl font-light'>{items.question}</span>
 				<Choices choices={filteredChoices} />
 				<div className='flex items-center'>
 					<span className='mr-3 font-semibold'>Answer:</span>
-					<span className='text-xl font-light '>{answer}</span>
+					<span className='text-xl font-light '>{items.answer}</span>
 				</div>
 			</div>
 			<div className='flex'>
 				<svg
-					onClick={() => edit(id)}
+					onClick={() => edit(items.id)}
 					viewBox='0 0 20 20'
 					className='w-6 h-6 mr-1 cursor-pointer fill-current pencil text-custom-primary'>
 					<path d='M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z'></path>

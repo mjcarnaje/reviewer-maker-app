@@ -8,62 +8,33 @@ import AddQuestion from '../../components/AddQuestion/AddQuestion';
 import Modal from '../../components/UI/Modal/Modal';
 class QuestionContainer extends Component {
 	state = {
-		items: [
-			{
-				id: 'id0',
-				question:
-					'Who is the best teacher in the world of programming in Youtube?',
-				choices: ['Simplified Dev', 'Design Course', 'Dennis Ivy'],
-				answer: 'Traversy Media',
-			},
-		],
+		items: [],
 		currentItem: {},
 		editState: false,
 		addQuestion: false,
 	};
-	updateQuestions = ({
-		inputQuestion,
-		inputCorrentAns,
-		inputCurrentChoice,
-		choices,
-		id,
-	}) => {
-		let newArray = [...this.state.items];
-		const questionID = nextId();
-		const elementIndex = this.state.items.findIndex((el) => el.id === id);
-		if (
-			inputQuestion !== '' &&
-			inputCorrentAns !== '' &&
-			inputCurrentChoice !== '' &&
-			choices !== [] &&
-			id === null
-		) {
+	updateQuestions = ({ question, correct, curChoice, choices, id }) => {
+		const newArray = [...this.state.items];
+		const questionIndex = this.state.items.findIndex((el) => el.id === id);
+		if (!id) {
 			newArray.push({
-				id: questionID,
-				question: inputQuestion,
-				choices: [...choices, inputCurrentChoice],
-				answer: inputCorrentAns,
+				id: nextId(),
+				question: question,
+				choices: [...choices, curChoice],
+				answer: correct,
 			});
-		} else if (
-			inputQuestion !== '' &&
-			inputCorrentAns !== '' &&
-			inputCurrentChoice !== '' &&
-			choices !== [] &&
-			this.state.editState
-		) {
-			newArray[elementIndex] = {
-				id,
-				question: inputQuestion,
-				choices: [...choices, inputCurrentChoice],
-				answer: inputCorrentAns,
-			};
 		} else {
-			return;
+			newArray[questionIndex] = {
+				id,
+				question: question,
+				choices: [...choices, curChoice],
+				answer: correct,
+			};
 		}
 		this.setState({
-			...this.state,
 			items: newArray,
 			editState: false,
+			addQuestion: false,
 		});
 	};
 
@@ -76,12 +47,12 @@ class QuestionContainer extends Component {
 	editQuestion = (questionID) => {
 		const itemsCopy = [...this.state.items];
 		const questionIndex = itemsCopy.findIndex((el) => questionID === el.id);
-		const copy = itemsCopy[questionIndex];
+		const curItem = itemsCopy[questionIndex];
 
 		this.setState({
 			addQuestion: true,
 			editState: true,
-			currentItem: copy,
+			currentItem: curItem,
 		});
 	};
 
@@ -101,7 +72,6 @@ class QuestionContainer extends Component {
 						currentItem={this.state.currentItem}
 						editState={this.state.editState}
 						sumbitItem={this.updateQuestions}
-						modalClosed={this.modalExit}
 					/>
 				</Modal>
 				<div className='min-h-screen px-3 py-24 sm:px-10 md:px-24 lg:px-large'>
