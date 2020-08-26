@@ -48,7 +48,6 @@ class addQuestion extends Component {
 		}
 
 		this.setState({
-			...this.state,
 			choices: choicesCopy,
 			curChoice: '',
 		});
@@ -58,15 +57,13 @@ class addQuestion extends Component {
 		const choiceIndex = choicesCopy.findIndex((el) => text === el);
 		choicesCopy[choiceIndex] = e.target.value;
 
-		this.setState((prevState, props) => {
-			return {
-				choices: choicesCopy,
-			};
+		this.setState({
+			choices: choicesCopy,
 		});
 	};
 	render() {
 		const otherChoices = this.state.choices;
-		let Choices;
+		let Choices = null;
 
 		if (otherChoices.length > 0) {
 			Choices = otherChoices.map((el, index) => {
@@ -81,8 +78,6 @@ class addQuestion extends Component {
 					/>
 				);
 			});
-		} else {
-			Choices = null;
 		}
 
 		return (
