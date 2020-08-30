@@ -12,7 +12,16 @@ module.exports = {
 				berkshire: ['Berkshire\\ Swash', 'serif'],
 				montserrat: ['Montserrat', 'sans-serif'],
 			},
+			borderRadius: {
+				xl: '12px',
+				xxl: '22px',
+			},
 			spacing: {
+				'30vh': '30vh',
+				'35vh': '35vh',
+				'40vh': '40vh',
+				'45vh': '45vh',
+				'50vh': '50vh',
 				'60vh': '60vh',
 				'70vh': '70vh',
 				'80vh': '80vh',
@@ -27,6 +36,7 @@ module.exports = {
 
 			padding: {
 				large: '22rem',
+				navigation: '70px',
 			},
 		},
 	},

@@ -6,9 +6,21 @@ import AddButton from '../../components/UI/Button/AddButton/AddButton';
 import Questions from '../../components/Questions/Questions';
 import AddQuestion from '../../components/AddQuestion/AddQuestion';
 import Modal from '../../components/UI/Modal/Modal';
-class QuestionContainer extends Component {
+class CreateQuestions extends Component {
 	state = {
-		items: [],
+		items: [
+			{
+				id: '01',
+				question:
+					'What is the translation of this word? wadu wadu wadsu wlkdsajf a lksajf laksjdflkj ;salkdjfsafdlkj lkjfsa',
+				choices: [
+					'laksjflksslkasdfosadlkfjlkdsajflkdsajf;lkdsajfdfjlkasjd',
+					'asdfsadfsadfalskjflsaf',
+					'alksasdfsadfdjflksajf',
+				],
+				answer: 'askdfsljflsasdlkjflkdsajflkaasdfsadfsdaf',
+			},
+		],
 		currentItem: {},
 		editState: false,
 		addQuestion: false,
@@ -38,8 +50,9 @@ class QuestionContainer extends Component {
 		});
 	};
 
-	deleteQuestion = (questionIndex) => {
+	deleteQuestion = (questionID) => {
 		const itemsCopy = [...this.state.items];
+		const questionIndex = itemsCopy.findIndex((el) => questionID === el.id);
 		itemsCopy.splice(questionIndex, 1);
 		this.setState({ items: itemsCopy });
 	};
@@ -74,21 +87,22 @@ class QuestionContainer extends Component {
 						sumbitItem={this.updateQuestions}
 					/>
 				</Modal>
-				<div className='min-h-screen px-3 py-24 sm:px-10 md:px-24 lg:px-large'>
-					<h1 className='text-3xl font-semibold text-gray-800 font-poppins'>
-						Create Your Questions:
-					</h1>
+				<div className='min-h-screen px-3 py-24 sm:px-10 md:px-24 lg:px-64'>
 					{this.state.items.length !== 0 ? (
 						<Questions
 							questions={this.state.items}
 							deleted={this.deleteQuestion}
 							edited={this.editQuestion}
 						/>
-					) : null}
+					) : (
+						<h1 className='text-3xl font-light text-gray-800 font-poppins text-center pt-6 pb-3'>
+							Create First Your Question
+						</h1>
+					)}
 					<AddButton clicked={this.modalOpen} />
 				</div>
 			</Auxiliary>
 		);
 	}
 }
-export default QuestionContainer;
+export default CreateQuestions;

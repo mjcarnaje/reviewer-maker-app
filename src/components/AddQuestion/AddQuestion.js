@@ -9,7 +9,6 @@ class addQuestion extends Component {
 		choices: [],
 		curChoice: '',
 	};
-
 	componentDidMount() {
 		if (this.props.editState) {
 			const cur = this.props.currentItem;
@@ -37,16 +36,23 @@ class addQuestion extends Component {
 			alert('Provide all the details');
 		}
 	};
-
+	keyDown = (e) => {
+		if (e.keyCode === 13) {
+			this.handleSumbit();
+		} else if (e.keyCode === 9) {
+			e.preventDefault();
+			this.addChoiceClicked();
+		}
+	};
 	addChoiceClicked = () => {
 		const choicesCopy = this.state.choices.slice();
 		const currentChoice = this.state.curChoice;
 		if (currentChoice !== '') {
 			choicesCopy.push(currentChoice);
+			this.textInput.focus();
 		} else {
 			return;
 		}
-
 		this.setState({
 			choices: choicesCopy,
 			curChoice: '',
@@ -96,6 +102,7 @@ class addQuestion extends Component {
 								onChange={(event) =>
 									this.setState({ question: event.target.value })
 								}
+								autoFocus
 							/>
 						</div>
 					</div>
@@ -125,6 +132,10 @@ class addQuestion extends Component {
 								onChange={(event) =>
 									this.setState({ curChoice: event.target.value })
 								}
+								onKeyDown={this.keyDown}
+								ref={(el) => {
+									this.textInput = el;
+								}}
 							/>
 						</div>
 						<button

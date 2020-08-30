@@ -1,15 +1,17 @@
 import React from 'react';
 import Layout from './hoc/Layout/Layout';
-// import HomeContainer from './containers/HomeContainer/HomeContainer';
-import QuestionContainer from './containers/QuestionContainer/QuestionContainer';
+// import Home from './containers/Home/Home';
+// import CreateQuestions from './containers/CreateQuestions/CreateQuestions';
+import PlayGame from './containers/PlayGame/PlayGame';
 
 function App() {
 	return (
 		<div className='App'>
 			<Layout>
 				{
-					// <HomeContainer />
-					<QuestionContainer />
+					// <Home />
+					// <CreateQuestions />
+					<PlayGame />
 				}
 			</Layout>
 		</div>

@@ -14,7 +14,11 @@ const AddButton = (props) => (
 					clipRule='evenodd'></path>
 			</svg>
 		</button>
-		<span className='ml-2 text-2xl font-normal font-poppins'>Add Question</span>
+		<span
+			className='ml-2 text-2xl font-normal font-poppins'
+			onClick={props.clicked}>
+			Add Question
+		</span>
 	</div>
 );
 

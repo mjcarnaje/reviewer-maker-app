@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import Auxiliary from '../../hoc/Auxiliary';
 import image01 from '../../assets/svg/studying.svg';
 
-class HomeContainer extends Component {
+class Home extends Component {
 	render() {
 		return (
 			<Auxiliary>
@@ -36,4 +36,4 @@ class HomeContainer extends Component {
 	}
 }
 
-export default HomeContainer;
+export default Home;
