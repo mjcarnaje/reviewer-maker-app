@@ -3,7 +3,8 @@ import React from 'react';
 import Choices from './Choices/Choices';
 
 const buildQuestion = ({ items, del, count, edit }) => {
-	const filteredChoices = items.choices.filter((el) => el);
+	const choices = Object.values(items.choices);
+	const filteredChoices = choices.filter((el) => el);
 	return (
 		<div className='flex justify-between px-4 py-6 mx-2 my-4 bg-gray-100 rounded-lg sm:mx-4 md:mx-6'>
 			<div className='text-lg leading-none font-poppins'>

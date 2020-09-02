@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import nextId from 'react-id-generator';
 import axios from 'axios';
+import nextId from 'react-id-generator';
 
 import Auxiliary from '../../hoc/Auxiliary';
 import AddButton from '../../components/UI/Button/AddButton/AddButton';
@@ -10,34 +10,50 @@ import Modal from '../../components/UI/Modal/Modal';
 import Spinner from '../../components/UI/Spinner/Spinner';
 class CreateQuestions extends Component {
 	state = {
-		items: [],
+		items: null,
 		currentItem: {},
 		editState: false,
 		addQuestion: false,
 		isLoading: false,
+		setQuestion: false,
 	};
 	componentDidMount() {
 		this.setState({ isLoading: true });
+
 		axios
 			.get('https://reviewerapp-aa8ab.firebaseio.com/items.json')
 			.then((response) => {
-				this.setState({ items: response.data, isLoading: false });
+				const res = response.data;
+				const data = Object.values(res);
+				this.setState({ items: [...data], isLoading: false });
+				console.log(res);
 			})
-			.catch((err) => console.log(err));
+			.catch((err) => this.setState({ setQuestion: true }));
 	}
-	updateQuestions = ({ question, correct, curChoice, choices, id }) => {
-		const newArray = [...this.state.items];
-		const questionIndex = this.state.items.findIndex((el) => el.id === id);
+	updateQuestions = ({ question, correct, choices, curChoice, id }) => {
+		let newArray = [];
+		let questionIndex;
+		if (this.state.items) {
+			newArray = [...this.state.items];
+			questionIndex = this.state.items.findIndex((el) => el.id === id);
+		}
 		if (!id) {
-			newArray.push({
+			const newQuestion = {
 				id: nextId(),
 				question: question,
 				choices: [...choices, curChoice],
 				answer: correct,
-			});
+			};
+			newArray.push({ ...newQuestion });
+			axios
+				.post(
+					`https://reviewerapp-aa8ab.firebaseio.com/items.json`,
+					newQuestion
+				)
+				.then((res) => console.log(res));
 		} else {
 			newArray[questionIndex] = {
-				id,
+				id: id,
 				question: question,
 				choices: [...choices, curChoice],
 				answer: correct,
@@ -78,6 +94,19 @@ class CreateQuestions extends Component {
 	};
 
 	render() {
+		let spinner;
+		if (this.state.isLoading && !this.state.setQuestion) {
+			spinner = <Spinner />;
+		} else if (this.state.isLoading && this.state.setQuestion) {
+			spinner = (
+				<h1 className='text-3xl font-light text-gray-800 font-poppins text-center pt-6 pb-3'>
+					Create First Your Question
+				</h1>
+			);
+		} else {
+			spinner = null;
+		}
+
 		return (
 			<Auxiliary>
 				<Modal show={this.state.addQuestion} modalClosed={this.modalExit}>
@@ -88,7 +117,7 @@ class CreateQuestions extends Component {
 					/>
 				</Modal>
 				<div className='min-h-screen px-3 py-24 sm:px-10 md:px-24 lg:px-64'>
-					{this.state.isLoading ? <Spinner /> : null}
+					{spinner}
 					{this.state.items ? (
 						<Questions
 							questions={this.state.items}
