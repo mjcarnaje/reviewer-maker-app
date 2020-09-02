@@ -1,8 +1,8 @@
 import React from 'react';
 import Layout from './hoc/Layout/Layout';
 // import Home from './containers/Home/Home';
-// import CreateQuestions from './containers/CreateQuestions/CreateQuestions';
-import PlayGame from './containers/PlayGame/PlayGame';
+import CreateQuestions from './containers/CreateQuestions/CreateQuestions';
+// import PlayGame from './containers/PlayGame/PlayGame';
 
 function App() {
 	return (
@@ -10,8 +10,8 @@ function App() {
 			<Layout>
 				{
 					// <Home />
-					// <CreateQuestions />
-					<PlayGame />
+					<CreateQuestions />
+					// <PlayGame />
 				}
 			</Layout>
 		</div>

@@ -1,30 +1,30 @@
 import React, { Component } from 'react';
 import nextId from 'react-id-generator';
+import axios from 'axios';
 
 import Auxiliary from '../../hoc/Auxiliary';
 import AddButton from '../../components/UI/Button/AddButton/AddButton';
 import Questions from '../../components/Questions/Questions';
 import AddQuestion from '../../components/AddQuestion/AddQuestion';
 import Modal from '../../components/UI/Modal/Modal';
+import Spinner from '../../components/UI/Spinner/Spinner';
 class CreateQuestions extends Component {
 	state = {
-		items: [
-			{
-				id: '01',
-				question:
-					'What is the translation of this word? wadu wadu wadsu wlkdsajf a lksajf laksjdflkj ;salkdjfsafdlkj lkjfsa',
-				choices: [
-					'laksjflksslkasdfosadlkfjlkdsajflkdsajf;lkdsajfdfjlkasjd',
-					'asdfsadfsadfalskjflsaf',
-					'alksasdfsadfdjflksajf',
-				],
-				answer: 'askdfsljflsasdlkjflkdsajflkaasdfsadfsdaf',
-			},
-		],
+		items: [],
 		currentItem: {},
 		editState: false,
 		addQuestion: false,
+		isLoading: false,
 	};
+	componentDidMount() {
+		this.setState({ isLoading: true });
+		axios
+			.get('https://reviewerapp-aa8ab.firebaseio.com/items.json')
+			.then((response) => {
+				this.setState({ items: response.data, isLoading: false });
+			})
+			.catch((err) => console.log(err));
+	}
 	updateQuestions = ({ question, correct, curChoice, choices, id }) => {
 		const newArray = [...this.state.items];
 		const questionIndex = this.state.items.findIndex((el) => el.id === id);
@@ -88,17 +88,14 @@ class CreateQuestions extends Component {
 					/>
 				</Modal>
 				<div className='min-h-screen px-3 py-24 sm:px-10 md:px-24 lg:px-64'>
-					{this.state.items.length !== 0 ? (
+					{this.state.isLoading ? <Spinner /> : null}
+					{this.state.items ? (
 						<Questions
 							questions={this.state.items}
 							deleted={this.deleteQuestion}
 							edited={this.editQuestion}
 						/>
-					) : (
-						<h1 className='text-3xl font-light text-gray-800 font-poppins text-center pt-6 pb-3'>
-							Create First Your Question
-						</h1>
-					)}
+					) : null}
 					<AddButton clicked={this.modalOpen} />
 				</div>
 			</Auxiliary>
