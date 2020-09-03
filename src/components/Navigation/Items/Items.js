@@ -1,6 +1,5 @@
 import React from 'react';
-
-import NavigationItem from './Item/Item';
+import { NavLink } from 'react-router-dom';
 
 const navigationItems = (props) => {
 	let classes;
@@ -9,15 +8,39 @@ const navigationItems = (props) => {
 	} else {
 		classes = 'hidden';
 	}
-
+	const navStyle =
+		'block font-semibold font-poppins text-xl hover:bg-indigo-300 hover:text-white text-custom-primary rounded px-2 py-1 sm:py-0 sm:ml-2 md:ml-4 lg:ml-16';
 	return (
 		<div
 			className={`${classes} sm:justify-center sm:items-center sm:p-0 px-2 pt-2 pb-4 sm:flex`}>
-			<NavigationItem link='/home' active>
+			<NavLink
+				exact
+				activeStyle={{
+					backgroundColor: '#82a4f3',
+					color: 'white',
+				}}
+				className={navStyle}
+				to='/'>
 				Home
-			</NavigationItem>
-			<NavigationItem link='/play-game'>Play</NavigationItem>
-			<NavigationItem link='/create-questions'>Questions</NavigationItem>
+			</NavLink>
+			<NavLink
+				activeStyle={{
+					backgroundColor: '#82a4f3',
+					color: 'white',
+				}}
+				className={navStyle}
+				to='/play-game'>
+				Play
+			</NavLink>
+			<NavLink
+				activeStyle={{
+					backgroundColor: '#82a4f3',
+					color: 'white',
+				}}
+				className={navStyle}
+				to='/create-questions'>
+				Questions
+			</NavLink>
 		</div>
 	);
 };

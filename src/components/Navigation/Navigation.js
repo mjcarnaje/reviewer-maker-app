@@ -13,7 +13,7 @@ export class Navigation extends Component {
 	};
 	render() {
 		return (
-			<header className='absolute top-0 left-0 z-50 w-full bg-white sm:flex sm:justify-between sm:px-4 sm:py-3 lg:px-12'>
+			<header className='absolute top-0 left-0 z-50 w-full bg-white shadow sm:flex sm:justify-between sm:px-4 sm:py-3 lg:px-12'>
 				<ToolBar
 					drawerToggleClicked={this.sideDrawerToggleHandler}
 					close={this.state.showSideDrawer}
