@@ -1,10 +1,9 @@
 import React from 'react';
 import BuildQuestion from './Question/Question';
-import Auxiliary from '../../hoc/Auxiliary';
 
 const questions = ({ questions, deleted, edited }) => {
 	return (
-		<Auxiliary>
+		<React.Fragment>
 			{questions.map((el, index) => {
 				return (
 					<BuildQuestion
@@ -16,7 +15,7 @@ const questions = ({ questions, deleted, edited }) => {
 					/>
 				);
 			})}
-		</Auxiliary>
+		</React.Fragment>
 	);
 };
 

@@ -6,8 +6,6 @@ const navigationItem = (props) => {
 	let classes;
 	if (props.active) {
 		classes = `${classesConstant} text-white bg-custom-primary`;
-	} else if (props.last) {
-		classes = `${classesConstant} text-custom-primary`;
 	} else {
 		classes = `${classesConstant} text-custom-primary`;
 	}

@@ -17,26 +17,24 @@ export class PlayGame extends Component {
 	render() {
 		const { question, choices } = this.state.currentItem;
 		return (
-			<div className=' pt-navigation bg-white'>
-				<div
-					className='w-full bg-custom-primary flex flex-col justify-center py-12 rounded-b-xl
-				'>
-					<div className='w-90vw md:w-70vw lg:w-60vw mx-auto'>
-						<h2 className=' block text-xl text-white font-poppins font-medium pl-4 pb-2'>
-							Question 1 <span className=' text-base '>/4</span>
+			<div className='bg-white pt-navigation'>
+				<div className='flex flex-col justify-center w-full py-12 bg-custom-primary rounded-b-xl '>
+					<div className='mx-auto w-90vw md:w-70vw lg:w-60vw'>
+						<h2 className='block pb-2 pl-4 text-xl font-medium text-white font-poppins'>
+							Question 1 <span className='text-base '>/4</span>
 						</h2>
-						<div className='bg-white font-poppins text-xl font-medium py-10 px-3 w-full mx-auto rounded-xl text-center'>
+						<div className='w-full px-3 py-10 mx-auto text-xl font-medium text-center bg-white font-poppins rounded-xl'>
 							{question}
 						</div>
 					</div>
 				</div>
 				<div className='px-4 sm:px-20'>
-					<div className='bg-indigo-100 w-full -mt-6 px-4 py-3 z-10 rounded-xxl md:w-7/12 lg:w-6/12 mx-auto'>
+					<div className='z-10 w-full px-4 py-3 mx-auto -mt-6 bg-indigo-100 rounded-xxl md:w-7/12 lg:w-6/12'>
 						{choices.map((choice, index) => (
 							<div
-								className='bg-white py-3 text-center rounded-xl shadow my-3'
+								className='py-3 my-3 text-center bg-white shadow rounded-xl'
 								key={index}>
-								<p className='font-poppins font-medium text-lg break-words px-4'>
+								<p className='px-4 text-lg font-medium break-words font-poppins'>
 									{choice}
 								</p>
 							</div>

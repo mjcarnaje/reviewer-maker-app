@@ -1,10 +1,9 @@
 import React from 'react';
-import Auxiliary from '../../../hoc/Auxiliary';
 import Backdrop from '../Backdrop/Backdrop';
 
 const modal = (props) => {
 	return (
-		<Auxiliary>
+		<React.Fragment>
 			<Backdrop show={props.show} clicked={props.modalClosed} />
 			<div
 				className='fixed p-6 bg-white rounded-md shadow-md opacity-0 z-200 center trans'
@@ -16,7 +15,7 @@ const modal = (props) => {
 				}}>
 				{props.show ? props.children : null}
 			</div>
-		</Auxiliary>
+		</React.Fragment>
 	);
 };
 

@@ -11,7 +11,7 @@ const choices = (props) => {
 		});
 	}
 
-	return <div className=' my-4 pl-4'>{choicesToRender}</div>;
+	return <div className='pl-4 my-4 '>{choicesToRender}</div>;
 };
 
 export default choices;

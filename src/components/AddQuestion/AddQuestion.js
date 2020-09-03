@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Auxiliary from '../../hoc/Auxiliary';
 
 class addQuestion extends Component {
 	state = {
@@ -87,7 +86,7 @@ class addQuestion extends Component {
 		}
 
 		return (
-			<Auxiliary>
+			<React.Fragment>
 				<div className=' w-85vw sm:w-70vw md:w-60vh'>
 					<div className=''>
 						<span className='block text-2.5xl font-poppins text-custom-primary'>
@@ -150,7 +149,7 @@ class addQuestion extends Component {
 						{this.props.editState ? 'Update' : 'Submit'}
 					</button>
 				</div>
-			</Auxiliary>
+			</React.Fragment>
 		);
 	}
 }

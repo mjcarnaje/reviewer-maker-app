@@ -1,17 +1,15 @@
 import React, { Component } from 'react';
-import Auxiliary from '../Auxiliary';
-import './Layout.scss';
 import Navigation from '../../components/Navigation/Navigation';
 
 class Layout extends Component {
 	render() {
 		return (
-			<Auxiliary>
+			<React.Fragment>
 				<div className='relative'>
 					<Navigation />
 					<main className='bg-indigo-100'>{this.props.children}</main>
 				</div>
-			</Auxiliary>
+			</React.Fragment>
 		);
 	}
 }

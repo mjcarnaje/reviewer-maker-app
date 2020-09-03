@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import nextId from 'react-id-generator';
 
-import Auxiliary from '../../hoc/Auxiliary';
 import AddButton from '../../components/UI/Button/AddButton/AddButton';
 import Questions from '../../components/Questions/Questions';
 import AddQuestion from '../../components/AddQuestion/AddQuestion';
@@ -99,7 +98,7 @@ class CreateQuestions extends Component {
 			spinner = <Spinner />;
 		} else if (this.state.isLoading && this.state.setQuestion) {
 			spinner = (
-				<h1 className='text-3xl font-light text-gray-800 font-poppins text-center pt-6 pb-3'>
+				<h1 className='pt-6 pb-3 text-3xl font-light text-center text-gray-800 font-poppins'>
 					Create First Your Question
 				</h1>
 			);
@@ -108,7 +107,7 @@ class CreateQuestions extends Component {
 		}
 
 		return (
-			<Auxiliary>
+			<React.Fragment>
 				<Modal show={this.state.addQuestion} modalClosed={this.modalExit}>
 					<AddQuestion
 						currentItem={this.state.currentItem}
@@ -127,7 +126,7 @@ class CreateQuestions extends Component {
 					) : null}
 					<AddButton clicked={this.modalOpen} />
 				</div>
-			</Auxiliary>
+			</React.Fragment>
 		);
 	}
 }
