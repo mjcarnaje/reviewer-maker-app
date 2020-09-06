@@ -1,20 +1,24 @@
 import React from 'react';
-import Backdrop from '../Backdrop/Backdrop';
 
 const modal = (props) => {
+	const { show, modalClosed } = props;
+	const handleClick = (e) => {
+		if (e.target.classList.contains('bg-gray-700')) {
+			modalClosed();
+		}
+	};
 	return (
 		<React.Fragment>
-			<Backdrop show={props.show} clicked={props.modalClosed} />
-			<div
-				className='fixed p-6 bg-white rounded-md shadow-md opacity-0 z-200 center trans'
-				style={{
-					transform: props.show
-						? 'translate(-50%, -50%)'
-						: 'translate(-50%, -200%)',
-					opacity: props.show ? '1' : '0',
-				}}>
-				{props.show ? props.children : null}
-			</div>
+			{show && (
+				<div
+					className='fixed top-0 left-0 flex items-center justify-center w-full h-full bg-gray-700 bg-opacity-25 z-100 bd'
+					onClick={handleClick}
+				>
+					<div className='p-6 bg-white rounded-md shadow-md z-200'>
+						{show && props.children}
+					</div>
+				</div>
+			)}
 		</React.Fragment>
 	);
 };

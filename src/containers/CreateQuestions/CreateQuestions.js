@@ -12,9 +12,9 @@ class CreateQuestions extends Component {
 		items: null,
 		currentItem: {},
 		editState: false,
-		addQuestion: false,
+		showModal: false,
 		isLoading: false,
-		setQuestion: false,
+		noQuestion: false,
 	};
 	componentDidMount() {
 		this.setState({ isLoading: true });
@@ -27,7 +27,7 @@ class CreateQuestions extends Component {
 				this.setState({ items: [...data], isLoading: false });
 				console.log(res);
 			})
-			.catch((err) => this.setState({ setQuestion: true }));
+			.catch((err) => this.setState({ noQuestion: true }));
 	}
 	updateQuestions = ({ question, correct, choices, curChoice, id }) => {
 		let newArray = [];
@@ -61,7 +61,7 @@ class CreateQuestions extends Component {
 		this.setState({
 			items: newArray,
 			editState: false,
-			addQuestion: false,
+			showModal: false,
 		});
 	};
 
@@ -78,25 +78,25 @@ class CreateQuestions extends Component {
 		const curItem = itemsCopy[questionIndex];
 
 		this.setState({
-			addQuestion: true,
+			showModal: true,
 			editState: true,
 			currentItem: curItem,
 		});
 	};
 
 	modalOpen = () => {
-		this.setState({ addQuestion: true });
+		this.setState({ showModal: true });
 	};
 
 	modalExit = () => {
-		this.setState({ currentItem: {}, addQuestion: false, editState: false });
+		this.setState({ currentItem: {}, showModal: false, editState: false });
 	};
 
 	render() {
 		let spinner;
-		if (this.state.isLoading && !this.state.setQuestion) {
+		if (this.state.isLoading && !this.state.noQuestion) {
 			spinner = <Spinner />;
-		} else if (this.state.isLoading && this.state.setQuestion) {
+		} else if (this.state.isLoading && this.state.noQuestion) {
 			spinner = (
 				<h1 className='pt-6 pb-3 text-3xl font-light text-center text-gray-800 font-poppins'>
 					Create First Your Question
@@ -108,7 +108,7 @@ class CreateQuestions extends Component {
 
 		return (
 			<React.Fragment>
-				<Modal show={this.state.addQuestion} modalClosed={this.modalExit}>
+				<Modal show={this.state.showModal} modalClosed={this.modalExit}>
 					<AddQuestion
 						currentItem={this.state.currentItem}
 						editState={this.state.editState}
