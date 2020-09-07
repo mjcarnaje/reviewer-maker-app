@@ -1,13 +1,11 @@
 import React from 'react';
 
-const GameQuestion = ({ curQuestion, checksAnswer, total, counter }) => {
-	const { question, choices, answer } = curQuestion;
-
-	const checksAns = (selectedChoice) => {
-		if (selectedChoice === answer) {
-			console.log('correct');
-		}
-	};
+const GameQuestion = ({
+	curQuestion: { question, choices },
+	checksAnswer,
+	total,
+	counter,
+}) => {
 	return (
 		<div className='w-full h-full bg-white pt-navigation '>
 			<div className='flex flex-col justify-center w-full py-12 bg-custom-primary rounded-b-xl '>
@@ -26,7 +24,7 @@ const GameQuestion = ({ curQuestion, checksAnswer, total, counter }) => {
 						<div
 							className={`py-3 my-3 text-center shadow rounded-xl bg-white`}
 							key={choice}
-							onClick={() => checksAns(choice)}
+							onClick={() => checksAnswer(choice)}
 						>
 							<p className='px-4 text-lg font-medium break-words font-poppins'>
 								{choice}

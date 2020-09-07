@@ -3,40 +3,34 @@ import GameQuestion from '../../components/GameQuestion/GameQuestion';
 
 export class PlayGame extends Component {
 	state = {
-		questions: [
-			{
-				question:
-					'The movie 10 Things I Hate About You was based on which play by Shakespeare:',
-				incorrect: [
-					'Taming of the Shrew',
-					'Hamlet',
-					'Romeo and Juliet',
-					"A MidSummer Night's Dream",
-				],
-				answer: 'Draco Malfoy',
-			},
-			{
-				question: 'Which country held the 2016 Summer Olympics?',
-				incorrect: ['China', 'Philippines', 'India'],
-				answer: 'South Korea',
-			},
-			{
-				question:
-					'Which one of these characters is not friends with Harry Potter?',
-				incorrect: [' Ron Weasley', 'Neville Longbottom', 'Hermione Granger'],
-				answer: 'Draco Malfoy',
-			},
-		],
+		questions: null,
 		currentQuestion: null,
 		questionCounter: 0,
 		total: 0,
-		init: true,
-		playGame: false,
+		gameOver: false,
 	};
+
+	static getDerivedStateFromProps(props, state) {
+		if (state.questions !== props.items && state.total === 0) {
+			const itemsArray = props.items.map((item) => {
+				const { question, choices, answer } = item;
+				let objectQuestions;
+				objectQuestions = {
+					question: question,
+					incorrect: choices,
+					answer: answer,
+				};
+				return objectQuestions;
+			});
+			return {
+				questions: itemsArray,
+			};
+		}
+		return null;
+	}
 	handlePlay = () => {
 		this.setNextQuestion();
 		this.setState({
-			playGame: true,
 			init: false,
 			total: this.state.questions.length,
 		});
@@ -46,8 +40,8 @@ export class PlayGame extends Component {
 		const questionsIndex = Math.floor(
 			Math.random() * availableQuestions.length
 		);
-		const { incorrect, answer, question } = availableQuestions[questionsIndex];
 
+		const { incorrect, answer, question } = availableQuestions[questionsIndex];
 		const shuffledChoices = [...incorrect, answer].sort(
 			() => 0.5 - Math.random()
 		);
@@ -57,11 +51,12 @@ export class PlayGame extends Component {
 			choices: shuffledChoices,
 			answer: answer,
 		};
-		availableQuestions.splice(questionsIndex, 1);
+
 		this.incrementQuestionCounter();
+		availableQuestions.splice(questionsIndex, 1);
+
 		this.setState({
-			checker: { correct: false, wrong: false },
-			questions: [...availableQuestions],
+			questions: availableQuestions,
 			currentQuestion: currentQuestion,
 		});
 	};
@@ -71,27 +66,28 @@ export class PlayGame extends Component {
 		}));
 	};
 	checksAnswer = (userClicked) => {
-		if (this.state.questions.length > 0) {
-			setTimeout(() => {
-				this.setNextQuestion();
-			}, 5000);
+		const { total, questionCounter, currentQuestion } = this.state;
+		if (userClicked === currentQuestion.answer) {
+			console.log('correc');
 		} else {
-			this.setState({
-				playGame: false,
-			});
+			console.log('wrong');
+		}
+		if (questionCounter < total) {
+			this.setNextQuestion();
+		} else {
+			this.finishedGame();
 		}
 	};
+	finishedGame = () => {
+		this.setState({
+			gameOver: true,
+		});
+	};
 	render() {
-		const {
-			playGame,
-			init,
-			currentQuestion,
-			questionCounter,
-			total,
-		} = this.state;
+		const { currentQuestion, questionCounter, total, gameOver } = this.state;
 		return (
 			<div className='flex items-center justify-center w-screen h-screen'>
-				{init && (
+				{total === 0 && (
 					<button
 						className='px-3 py-2 text-white rounded-md btn bg-custom-primary font-poppins'
 						onClick={this.handlePlay}
@@ -99,7 +95,7 @@ export class PlayGame extends Component {
 						Play Game
 					</button>
 				)}
-				{playGame && (
+				{total !== 0 && !gameOver && (
 					<GameQuestion
 						curQuestion={currentQuestion}
 						total={total}
@@ -107,6 +103,7 @@ export class PlayGame extends Component {
 						checksAnswer={this.checksAnswer}
 					/>
 				)}
+				{gameOver && <h1>Finished Game!!</h1>}
 			</div>
 		);
 	}

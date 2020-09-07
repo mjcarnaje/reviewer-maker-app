@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import axios from 'axios';
-import nextId from 'react-id-generator';
+// import axios from 'axios';
+import uniqid from 'uniqid';
 
 import AddButton from '../../components/UI/Button/AddButton/AddButton';
 import Questions from '../../components/Questions/Questions';
@@ -13,21 +13,14 @@ class CreateQuestions extends Component {
 		currentItem: {},
 		editState: false,
 		showModal: false,
-		isLoading: false,
-		noQuestion: false,
 	};
-	componentDidMount() {
-		this.setState({ isLoading: true });
-
-		axios
-			.get('https://reviewerapp-aa8ab.firebaseio.com/items.json')
-			.then((response) => {
-				const res = response.data;
-				const data = Object.values(res);
-				this.setState({ items: [...data], isLoading: false });
-				console.log(res);
-			})
-			.catch((err) => this.setState({ noQuestion: true }));
+	static getDerivedStateFromProps(props, state) {
+		if (state.items !== props.items) {
+			return {
+				items: props.items,
+			};
+		}
+		return null;
 	}
 	updateQuestions = ({ question, correct, choices, curChoice, id }) => {
 		let newArray = [];
@@ -38,18 +31,18 @@ class CreateQuestions extends Component {
 		}
 		if (!id) {
 			const newQuestion = {
-				id: nextId(),
+				id: uniqid(),
 				question: question,
 				choices: [...choices, curChoice],
 				answer: correct,
 			};
 			newArray.push({ ...newQuestion });
-			axios
-				.post(
-					`https://reviewerapp-aa8ab.firebaseio.com/items.json`,
-					newQuestion
-				)
-				.then((res) => console.log(res));
+			// axios
+			// 	.post(
+			// 		`https://reviewerapp-aa8ab.firebaseio.com/items.json`,
+			// 		newQuestion
+			// 	)
+			// 	.then((res) => console.log(res));
 		} else {
 			newArray[questionIndex] = {
 				id: id,
@@ -59,17 +52,17 @@ class CreateQuestions extends Component {
 			};
 		}
 		this.setState({
-			items: newArray,
 			editState: false,
 			showModal: false,
 		});
+		this.props.updateQuestions(newArray);
 	};
 
 	deleteQuestion = (questionID) => {
 		const itemsCopy = [...this.state.items];
 		const questionIndex = itemsCopy.findIndex((el) => questionID === el.id);
 		itemsCopy.splice(questionIndex, 1);
-		this.setState({ items: itemsCopy });
+		this.props.deleteQuestion(itemsCopy);
 	};
 
 	editQuestion = (questionID) => {
@@ -94,9 +87,9 @@ class CreateQuestions extends Component {
 
 	render() {
 		let spinner;
-		if (this.state.isLoading && !this.state.noQuestion) {
+		if (this.props.isLoading && !this.props.noQuestion) {
 			spinner = <Spinner />;
-		} else if (this.state.isLoading && this.state.noQuestion) {
+		} else if (this.props.isLoading && this.props.noQuestion) {
 			spinner = (
 				<h1 className='pt-6 pb-3 text-3xl font-light text-center text-gray-800 font-poppins'>
 					Create First Your Question
