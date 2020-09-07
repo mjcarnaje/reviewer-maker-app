@@ -12,7 +12,8 @@ const navigationItems = (props) => {
 		'block font-semibold font-poppins text-xl hover:bg-indigo-300 hover:text-white text-custom-primary rounded px-2 py-1 sm:py-0 sm:ml-2 md:ml-4 lg:ml-16';
 	return (
 		<div
-			className={`${classes} sm:justify-center sm:items-center sm:p-0 px-2 pt-2 pb-4 sm:flex`}>
+			className={`${classes} sm:justify-center sm:items-center sm:p-0 px-2 pt-2 pb-4 sm:flex`}
+		>
 			<NavLink
 				exact
 				activeStyle={{
@@ -20,7 +21,8 @@ const navigationItems = (props) => {
 					color: 'white',
 				}}
 				className={navStyle}
-				to='/'>
+				to='/'
+			>
 				Home
 			</NavLink>
 			<NavLink
@@ -29,7 +31,8 @@ const navigationItems = (props) => {
 					color: 'white',
 				}}
 				className={navStyle}
-				to='/play-game'>
+				to='/play-game'
+			>
 				Play
 			</NavLink>
 			<NavLink
@@ -38,7 +41,8 @@ const navigationItems = (props) => {
 					color: 'white',
 				}}
 				className={navStyle}
-				to='/create-questions'>
+				to='/create-questions'
+			>
 				Questions
 			</NavLink>
 		</div>

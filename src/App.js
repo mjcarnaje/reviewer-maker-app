@@ -28,6 +28,7 @@ class App extends Component {
 			console.log(error);
 			this.setState({
 				noQuestion: true,
+				isLoading: false,
 			});
 		}
 	}
@@ -51,7 +52,13 @@ class App extends Component {
 							<Route path='/' exact component={Home} />
 							<Route
 								path='/play-game'
-								render={() => <PlayGame items={this.state.items} />}
+								render={() => (
+									<PlayGame
+										items={this.state.items}
+										isLoading={this.state.isLoading}
+										noQuestion={this.state.noQuestion}
+									/>
+								)}
 							/>
 							<Route
 								path='/create-questions'

@@ -1,11 +1,27 @@
 import React from 'react';
 
 const GameQuestion = ({
-	curQuestion: { question, choices },
-	checksAnswer,
+	curQuestion: { question, choices, answer },
+	nextQuestion,
 	total,
 	counter,
 }) => {
+	const choicesRef = [];
+	const checksAns = (userClicked) => {
+		const clickedStyles = choicesRef[userClicked].style;
+		const answerStyles = choicesRef[answer].style;
+
+		if (userClicked === answer) {
+			clickedStyles.backgroundColor = 'green';
+			clickedStyles.color = 'white';
+		} else {
+			clickedStyles.backgroundColor = 'red';
+			answerStyles.backgroundColor = 'green';
+			clickedStyles.color = 'white';
+			answerStyles.color = 'white';
+		}
+		setTimeout(() => nextQuestion(), 1000);
+	};
 	return (
 		<div className='w-full h-full bg-white pt-navigation '>
 			<div className='flex flex-col justify-center w-full py-12 bg-custom-primary rounded-b-xl '>
@@ -24,7 +40,8 @@ const GameQuestion = ({
 						<div
 							className={`py-3 my-3 text-center shadow rounded-xl bg-white`}
 							key={choice}
-							onClick={() => checksAnswer(choice)}
+							ref={(ref) => (choicesRef[choice] = ref)}
+							onClick={() => checksAns(choice)}
 						>
 							<p className='px-4 text-lg font-medium break-words font-poppins'>
 								{choice}

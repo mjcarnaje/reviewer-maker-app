@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-// import axios from 'axios';
+import axios from 'axios';
 import uniqid from 'uniqid';
 
 import AddButton from '../../components/UI/Button/AddButton/AddButton';
@@ -37,12 +37,12 @@ class CreateQuestions extends Component {
 				answer: correct,
 			};
 			newArray.push({ ...newQuestion });
-			// axios
-			// 	.post(
-			// 		`https://reviewerapp-aa8ab.firebaseio.com/items.json`,
-			// 		newQuestion
-			// 	)
-			// 	.then((res) => console.log(res));
+			axios
+				.post(
+					`https://reviewerapp-aa8ab.firebaseio.com/items.json`,
+					newQuestion
+				)
+				.then((res) => console.log(res));
 		} else {
 			newArray[questionIndex] = {
 				id: id,
@@ -89,7 +89,7 @@ class CreateQuestions extends Component {
 		let spinner;
 		if (this.props.isLoading && !this.props.noQuestion) {
 			spinner = <Spinner />;
-		} else if (this.props.isLoading && this.props.noQuestion) {
+		} else if (!this.props.isLoading && this.props.noQuestion) {
 			spinner = (
 				<h1 className='pt-6 pb-3 text-3xl font-light text-center text-gray-800 font-poppins'>
 					Create First Your Question

@@ -16,9 +16,12 @@ class Home extends Component {
 						</p>
 					</div>
 					<div className='mt-16'>
-						<button className='block px-3 py-2 text-xl text-white border-none rounded sm:text-2xl font-poppins bg-custom-primary hover:bg-indigo-400 focus:outline-none'>
+						<a
+							href='/create-questions'
+							className='inline-block px-3 py-2 text-xl text-white border-none rounded sm:text-2xl font-poppins bg-custom-primary hover:bg-indigo-400 focus:outline-none'
+						>
 							Get Started
-						</button>
+						</a>
 					</div>
 				</div>
 				<div className='absolute bottom-0 right-0 w-2/3 sm:relative sm:w-auto sm:px-10 sm:m-0 lg:w-full lg:h-auto'>

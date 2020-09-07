@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import GameQuestion from '../../components/GameQuestion/GameQuestion';
+import Spinner from '../../components/UI/Spinner/Spinner';
 
 export class PlayGame extends Component {
 	state = {
@@ -42,6 +43,7 @@ export class PlayGame extends Component {
 		);
 
 		const { incorrect, answer, question } = availableQuestions[questionsIndex];
+
 		const shuffledChoices = [...incorrect, answer].sort(
 			() => 0.5 - Math.random()
 		);
@@ -65,42 +67,56 @@ export class PlayGame extends Component {
 			questionCounter: state.questionCounter + 1,
 		}));
 	};
-	checksAnswer = (userClicked) => {
-		const { total, questionCounter, currentQuestion } = this.state;
-		if (userClicked === currentQuestion.answer) {
-			console.log('correc');
-		} else {
-			console.log('wrong');
-		}
+	nextQuestion = () => {
+		const { questionCounter, total } = this.state;
 		if (questionCounter < total) {
 			this.setNextQuestion();
 		} else {
-			this.finishedGame();
+			this.setState({
+				gameOver: true,
+			});
 		}
 	};
-	finishedGame = () => {
-		this.setState({
-			gameOver: true,
-		});
-	};
+
 	render() {
 		const { currentQuestion, questionCounter, total, gameOver } = this.state;
+
+		let spinner;
+		if (this.props.isLoading && !this.props.noQuestion) {
+			spinner = <Spinner />;
+		} else if (
+			!this.props.isLoading &&
+			this.props.noQuestion &&
+			!this.state.questions
+		) {
+			spinner = (
+				<a
+					href='/create-questions'
+					className='inline-block px-3 py-2 text-xl text-white border-none rounded sm:text-2xl font-poppins bg-custom-primary hover:bg-indigo-400 focus:outline-none'
+				>
+					Create Question/s
+				</a>
+			);
+		} else {
+			spinner = (
+				<button
+					className='px-3 py-2 text-white rounded-md btn bg-custom-primary font-poppins'
+					onClick={this.handlePlay}
+				>
+					Start Quiz
+				</button>
+			);
+		}
+
 		return (
 			<div className='flex items-center justify-center w-screen h-screen'>
-				{total === 0 && (
-					<button
-						className='px-3 py-2 text-white rounded-md btn bg-custom-primary font-poppins'
-						onClick={this.handlePlay}
-					>
-						Play Game
-					</button>
-				)}
+				{total === 0 && spinner}
 				{total !== 0 && !gameOver && (
 					<GameQuestion
 						curQuestion={currentQuestion}
 						total={total}
 						counter={questionCounter}
-						checksAnswer={this.checksAnswer}
+						nextQuestion={this.nextQuestion}
 					/>
 				)}
 				{gameOver && <h1>Finished Game!!</h1>}
