@@ -12,11 +12,11 @@ const GameQuestion = ({
 		const answerStyles = choicesRef[answer].style;
 
 		if (userClicked === answer) {
-			clickedStyles.backgroundColor = 'green';
+			clickedStyles.backgroundColor = '#14C223';
 			clickedStyles.color = 'white';
 		} else {
-			clickedStyles.backgroundColor = 'red';
-			answerStyles.backgroundColor = 'green';
+			clickedStyles.backgroundColor = '#C91F41';
+			answerStyles.backgroundColor = '#14C223';
 			clickedStyles.color = 'white';
 			answerStyles.color = 'white';
 		}
@@ -49,6 +49,14 @@ const GameQuestion = ({
 						</div>
 					))}
 				</div>
+			</div>
+			<div className='flex items-center justify-center w-full py-4'>
+				<button
+					className='px-3 py-2 text-sm text-center text-white rounded-md btn bg-custom-primary font-poppins'
+					onClick={() => nextQuestion()}
+				>
+					Skip Question
+				</button>
 			</div>
 		</div>
 	);

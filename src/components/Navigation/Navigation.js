@@ -18,7 +18,10 @@ export class Navigation extends Component {
 					drawerToggleClicked={this.sideDrawerToggleHandler}
 					close={this.state.showSideDrawer}
 				/>
-				<NavigationItems open={this.state.showSideDrawer} />
+				<NavigationItems
+					open={this.state.showSideDrawer}
+					drawerToggleClicked={this.sideDrawerToggleHandler}
+				/>
 			</header>
 		);
 	}

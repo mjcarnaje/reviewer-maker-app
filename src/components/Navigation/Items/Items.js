@@ -22,6 +22,7 @@ const navigationItems = (props) => {
 				}}
 				className={navStyle}
 				to='/'
+				onClick={props.drawerToggleClicked}
 			>
 				Home
 			</NavLink>
@@ -32,6 +33,7 @@ const navigationItems = (props) => {
 				}}
 				className={navStyle}
 				to='/play-game'
+				onClick={props.drawerToggleClicked}
 			>
 				Play
 			</NavLink>
@@ -42,6 +44,7 @@ const navigationItems = (props) => {
 				}}
 				className={navStyle}
 				to='/create-questions'
+				onClick={props.drawerToggleClicked}
 			>
 				Questions
 			</NavLink>
