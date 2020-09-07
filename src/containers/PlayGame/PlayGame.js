@@ -6,13 +6,18 @@ export class PlayGame extends Component {
 	state = {
 		questions: null,
 		currentQuestion: null,
+		correctAnswered: 0,
 		questionCounter: 0,
 		total: 0,
 		gameOver: false,
+		isPlayAgain: false,
 	};
 
 	static getDerivedStateFromProps(props, state) {
-		if (state.questions !== props.items && state.total === 0) {
+		if (
+			(state.questions !== props.items && state.total === 0) ||
+			state.isPlayAgain
+		) {
 			const itemsArray = props.items.map((item) => {
 				const { question, choices, answer } = item;
 				let objectQuestions;
@@ -30,11 +35,11 @@ export class PlayGame extends Component {
 		return null;
 	}
 	handlePlay = () => {
-		this.setNextQuestion();
 		this.setState({
-			init: false,
 			total: this.state.questions.length,
+			isPlayAgain: false,
 		});
+		this.setNextQuestion();
 	};
 	setNextQuestion = () => {
 		const availableQuestions = [...this.state.questions];
@@ -67,7 +72,7 @@ export class PlayGame extends Component {
 			questionCounter: state.questionCounter + 1,
 		}));
 	};
-	nextQuestion = () => {
+	nextQuestion = (isCorrect) => {
 		const { questionCounter, total } = this.state;
 		if (questionCounter < total) {
 			this.setNextQuestion();
@@ -76,10 +81,31 @@ export class PlayGame extends Component {
 				gameOver: true,
 			});
 		}
+		if (isCorrect) {
+			this.setState((state, props) => ({
+				correctAnswered: state.correctAnswered + 1,
+			}));
+		}
+	};
+
+	playAgain = async () => {
+		await this.setState({
+			isPlayAgain: true,
+			gameOver: false,
+			questionCounter: 0,
+			correctAnswered: 0,
+		});
+		await this.handlePlay();
 	};
 
 	render() {
-		const { currentQuestion, questionCounter, total, gameOver } = this.state;
+		const {
+			currentQuestion,
+			questionCounter,
+			total,
+			gameOver,
+			correctAnswered,
+		} = this.state;
 
 		let spinner;
 		if (this.props.isLoading && !this.props.noQuestion) {
@@ -119,7 +145,14 @@ export class PlayGame extends Component {
 						nextQuestion={this.nextQuestion}
 					/>
 				)}
-				{gameOver && <h1>Finished Game!!</h1>}
+				{gameOver && (
+					<div>
+						<h1>{`${correctAnswered} / ${total}`}</h1>
+						<a href='/'>Go to Home</a>
+						<button onClick={this.playAgain}>Play Again</button>
+						<a href='/create-questions	'>Create More Question</a>
+					</div>
+				)}
 			</div>
 		);
 	}

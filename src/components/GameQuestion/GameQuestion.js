@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 const GameQuestion = ({
 	curQuestion: { question, choices, answer },
@@ -6,21 +6,28 @@ const GameQuestion = ({
 	total,
 	counter,
 }) => {
+	const [isAnswered, setIsAnswered] = useState(false);
+	const [isCorrect, setIsCorrect] = useState(null);
 	const choicesRef = [];
-	const checksAns = (userClicked) => {
-		const clickedStyles = choicesRef[userClicked].style;
-		const answerStyles = choicesRef[answer].style;
 
+	const checksAns = (userClicked) => {
 		if (userClicked === answer) {
-			clickedStyles.backgroundColor = '#14C223';
-			clickedStyles.color = 'white';
+			choicesRef[userClicked].style['backgroundColor'] = '#14C223';
+			choicesRef[userClicked].style['color'] = '#fff';
+			setIsCorrect(true);
 		} else {
-			clickedStyles.backgroundColor = '#C91F41';
-			answerStyles.backgroundColor = '#14C223';
-			clickedStyles.color = 'white';
-			answerStyles.color = 'white';
+			choicesRef[userClicked].style['backgroundColor'] = '#C91F41';
+			choicesRef[userClicked].style['color'] = '#fff';
+			choicesRef[answer].style['backgroundColor'] = '#14C223';
+			choicesRef[answer].style['color'] = '#fff';
+			setIsCorrect(false);
 		}
-		setTimeout(() => nextQuestion(), 1000);
+		setIsAnswered(true);
+	};
+	const nextButtonClicked = () => {
+		setIsAnswered(false);
+		setIsCorrect(null);
+		nextQuestion(isCorrect);
 	};
 	return (
 		<div className='w-full h-full bg-white pt-navigation '>
@@ -37,26 +44,29 @@ const GameQuestion = ({
 			<div className='px-4 sm:px-20'>
 				<div className='z-10 w-full px-4 py-3 mx-auto -mt-6 bg-indigo-100 rounded-xxl md:w-7/12 lg:w-6/12'>
 					{choices.map((choice) => (
-						<div
-							className={`py-3 my-3 text-center shadow rounded-xl bg-white`}
+						<button
+							className='block w-full py-3 my-3 text-center bg-white shadow cursor-pointer rounded-xl focus:outline-none'
 							key={choice}
 							ref={(ref) => (choicesRef[choice] = ref)}
+							disabled={isAnswered}
 							onClick={() => checksAns(choice)}
 						>
 							<p className='px-4 text-lg font-medium break-words font-poppins'>
 								{choice}
 							</p>
-						</div>
+						</button>
 					))}
 				</div>
 			</div>
 			<div className='flex items-center justify-center w-full py-4'>
-				<button
-					className='px-3 py-2 text-sm text-center text-white rounded-md btn bg-custom-primary font-poppins'
-					onClick={() => nextQuestion()}
-				>
-					Skip Question
-				</button>
+				{isAnswered && (
+					<button
+						className='px-3 py-2 text-sm text-center text-white rounded-md btn bg-custom-primary font-poppins'
+						onClick={() => nextButtonClicked()}
+					>
+						{total === counter ? 'See Results' : 'Next Question'}
+					</button>
+				)}
 			</div>
 		</div>
 	);
