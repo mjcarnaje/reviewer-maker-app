@@ -61,7 +61,7 @@ class App extends Component {
 						<Switch>
 							<Route path='/' exact component={Home} />
 							<Route
-								path='/play-game'
+								path='/quiz'
 								render={() => (
 									<PlayGame
 										items={this.state.items}

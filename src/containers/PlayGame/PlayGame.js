@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import GameQuestion from '../../components/GameQuestion/GameQuestion';
 import Spinner from '../../components/UI/Spinner/Spinner';
+import add_question from './../../assets/svg/add_question.svg';
+import start_question from './../../assets/svg/start_question.svg';
 
 export class PlayGame extends Component {
 	state = {
@@ -112,21 +114,35 @@ export class PlayGame extends Component {
 			spinner = <Spinner />;
 		} else if (!this.props.isLoading && this.props.noQuestion) {
 			spinner = (
-				<a
-					href='/create-questions'
-					className='inline-block px-3 py-2 text-xl text-white border-none rounded sm:text-2xl font-poppins bg-custom-primary hover:bg-indigo-400 focus:outline-none'
-				>
-					Create Question/s
-				</a>
+				<div className='w-full text-center'>
+					<img
+						src={add_question}
+						alt='add_question'
+						className='w-10/12 px-4 py-6 m-auto sm:w-8/12 md:w-6/12 lg:w-5/12'
+					/>
+					<a
+						href='/create-questions'
+						className='inline-block px-3 py-2 mt-3 text-lg text-white border-none rounded font-poppins bg-custom-primary hover:bg-indigo-400 focus:outline-none'
+					>
+						Create Question/s
+					</a>
+				</div>
 			);
 		} else {
 			spinner = (
-				<button
-					className='px-3 py-2 text-white rounded-md btn bg-custom-primary font-poppins'
-					onClick={this.handlePlay}
-				>
-					Start Quiz
-				</button>
+				<div className='w-full text-center'>
+					<img
+						src={start_question}
+						alt='start_question'
+						className='w-10/12 px-4 py-6 m-auto sm:w-8/12 md:w-6/12 lg:w-5/12'
+					/>
+					<button
+						className='px-3 py-2 mt-3 text-white rounded-md btn bg-custom-primary font-poppins'
+						onClick={this.handlePlay}
+					>
+						Start Quiz
+					</button>
+				</div>
 			);
 		}
 

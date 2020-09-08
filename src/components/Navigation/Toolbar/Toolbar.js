@@ -3,7 +3,7 @@ import React from 'react';
 const toolBar = (props) => (
 	<nav className='flex items-center justify-center px-4 py-3 shadow sm:p-0 sm:shadow-none'>
 		<a href='/' className='flex-1 text-3xl font-berkshire text-custom-primary'>
-			ReviewerMaker
+			Reviewer
 		</a>
 		<div className='sm:hidden'>
 			<button

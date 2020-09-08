@@ -6,6 +6,7 @@ import Questions from '../../components/Questions/Questions';
 import AddQuestion from '../../components/AddQuestion/AddQuestion';
 import Modal from '../../components/UI/Modal/Modal';
 import Spinner from '../../components/UI/Spinner/Spinner';
+import create_question from '../../assets/svg/create_question.svg';
 class CreateQuestions extends Component {
 	state = {
 		items: null,
@@ -84,9 +85,11 @@ class CreateQuestions extends Component {
 			spinner = <Spinner />;
 		} else if (!this.props.isLoading && this.props.noQuestion) {
 			spinner = (
-				<h1 className='pt-6 pb-3 text-3xl font-light text-center text-gray-800 font-poppins'>
-					Create First Your Question
-				</h1>
+				<img
+					src={create_question}
+					alt='add_question'
+					className='w-10/12 px-4 py-6 m-auto sm:w-8/12 '
+				/>
 			);
 		} else {
 			spinner = null;

@@ -32,10 +32,10 @@ const navigationItems = (props) => {
 					color: 'white',
 				}}
 				className={navStyle}
-				to='/play-game'
+				to='/quiz'
 				onClick={props.drawerToggleClicked}
 			>
-				Play
+				Quiz
 			</NavLink>
 			<NavLink
 				activeStyle={{

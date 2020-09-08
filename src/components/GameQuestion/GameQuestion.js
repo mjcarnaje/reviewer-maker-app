@@ -11,15 +11,15 @@ const GameQuestion = ({
 	const choicesRef = [];
 
 	const checksAns = (userClicked) => {
+		const correct = 'color: #fff; background: #14C223;';
+		const wrong = 'color: #fff; background: #C91F41;';
+
 		if (userClicked === answer) {
-			choicesRef[userClicked].style['backgroundColor'] = '#14C223';
-			choicesRef[userClicked].style['color'] = '#fff';
+			choicesRef[userClicked].style = correct;
 			setIsCorrect(true);
 		} else {
-			choicesRef[userClicked].style['backgroundColor'] = '#C91F41';
-			choicesRef[userClicked].style['color'] = '#fff';
-			choicesRef[answer].style['backgroundColor'] = '#14C223';
-			choicesRef[answer].style['color'] = '#fff';
+			choicesRef[userClicked].style = wrong;
+			choicesRef[answer].style = correct;
 			setIsCorrect(false);
 		}
 		setIsAnswered(true);
@@ -30,7 +30,7 @@ const GameQuestion = ({
 		nextQuestion(isCorrect);
 	};
 	return (
-		<div className='w-full h-full bg-white pt-navigation '>
+		<div className='w-full h-full bg-white pt-navigation'>
 			<div className='flex flex-col justify-center w-full py-12 bg-custom-primary rounded-b-xl '>
 				<div className='mx-auto w-90vw md:w-70vw lg:w-60vw'>
 					<h2 className='block pb-2 pl-4 text-xl font-medium text-white font-poppins'>
