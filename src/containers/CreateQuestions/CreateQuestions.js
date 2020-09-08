@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 import uniqid from 'uniqid';
 
 import AddButton from '../../components/UI/Button/AddButton/AddButton';
@@ -37,12 +36,6 @@ class CreateQuestions extends Component {
 				answer: correct,
 			};
 			newArray.push({ ...newQuestion });
-			axios
-				.post(
-					`https://reviewerapp-aa8ab.firebaseio.com/items.json`,
-					newQuestion
-				)
-				.then((res) => console.log(res));
 		} else {
 			newArray[questionIndex] = {
 				id: id,

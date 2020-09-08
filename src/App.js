@@ -1,7 +1,7 @@
 //node_module
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import axios from 'axios';
+import ls from 'local-storage';
 //local module
 import Layout from './hoc/Layout/Layout';
 import Home from './containers/Home/Home';
@@ -14,32 +14,26 @@ class App extends Component {
 		isLoading: false,
 		noQuestion: false,
 	};
-	async componentDidMount() {
-		this.setState({ isLoading: true });
-
-		try {
-			const response = await axios.get(
-				'https://reviewerapp-aa8ab.firebaseio.com/items.json'
-			);
-			const data = await response.data;
-			const items = await Object.values(data);
-			this.setState({ items: [...items], isLoading: false });
-		} catch (error) {
-			this.setState({
-				noQuestion: true,
-				isLoading: false,
-			});
-		}
+	componentDidMount() {
+		this.setState({
+			isLoading: true,
+		});
+		this.setState({
+			items: ls.get('items') || [],
+			isLoading: false,
+		});
 	}
 	updateQuestions = (newArray) => {
 		this.setState({
 			items: newArray,
 		});
+		ls.set('items', newArray);
 	};
 	deleteQuestion = (newArray) => {
 		this.setState({
 			items: newArray,
 		});
+		ls.set('items', newArray);
 	};
 
 	render() {
