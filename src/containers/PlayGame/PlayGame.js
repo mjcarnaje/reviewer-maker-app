@@ -110,11 +110,7 @@ export class PlayGame extends Component {
 		let spinner;
 		if (this.props.isLoading && !this.props.noQuestion) {
 			spinner = <Spinner />;
-		} else if (
-			!this.props.isLoading &&
-			this.props.noQuestion &&
-			!this.state.questions
-		) {
+		} else if (!this.props.isLoading && this.props.noQuestion) {
 			spinner = (
 				<a
 					href='/create-questions'
@@ -146,11 +142,11 @@ export class PlayGame extends Component {
 					/>
 				)}
 				{gameOver && (
-					<div className='w-10/12 py-3 bg-gray-100 rounded'>
-						<h1 className='py-2 text-3xl font-semibold text-center font-poppins text-custom-primary '>
+					<div className='w-10/12 py-3 bg-gray-100 rounded sm:w-8/12 md:w-7/12 lg:w-6/12'>
+						<h1 className='py-2 text-3xl font-semibold text-center sm:text-4xl font-poppins text-custom-primary '>
 							Quiz Results
 						</h1>
-						<table className='w-10/12 mx-auto my-2 table-auto font-poppins'>
+						<table className='w-10/12 mx-auto my-2 text-lg table-auto font-poppins'>
 							<tbody>
 								<tr>
 									<td className='px-4 py-2 border '>Total Question</td>
@@ -179,16 +175,16 @@ export class PlayGame extends Component {
 								</tr>
 							</tbody>
 						</table>
-						<div className='flex justify-center text-center text-white'>
+						<div className='flex items-center justify-center text-center text-white'>
 							<button
 								onClick={this.playAgain}
-								className='inline-block w-auto px-2 py-1 mx-2 my-1 rounded bg-custom-primary'
+								className='inline-block w-auto px-2 py-1 mx-2 my-1 rounded md:my-2 md:mx-3 bg-custom-primary font-montserrat'
 							>
 								Play Again
 							</button>
 							<a
 								href='/create-questions'
-								className='inline-block w-auto px-2 py-1 mx-2 my-1 rounded bg-custom-primary'
+								className='inline-block w-auto px-2 py-1 mx-2 my-1 rounded md:my-2 md:mx-3 bg-custom-primary font-montserrat'
 							>
 								Questions
 							</a>

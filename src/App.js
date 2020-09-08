@@ -15,24 +15,41 @@ class App extends Component {
 		noQuestion: false,
 	};
 	componentDidMount() {
+		const lsItems = ls.get('items');
 		this.setState({
 			isLoading: true,
 		});
-		this.setState({
-			items: ls.get('items') || [],
-			isLoading: false,
-		});
+		if (lsItems.length === 0) {
+			this.setState({
+				isLoading: false,
+				items: [],
+				noQuestion: true,
+			});
+		} else {
+			this.setState({
+				items: lsItems,
+				isLoading: false,
+			});
+		}
 	}
 	updateQuestions = (newArray) => {
 		this.setState({
 			items: newArray,
+			noQuestion: false,
 		});
 		ls.set('items', newArray);
 	};
 	deleteQuestion = (newArray) => {
-		this.setState({
-			items: newArray,
-		});
+		if (newArray.length === 0) {
+			this.setState({
+				items: newArray,
+				noQuestion: true,
+			});
+		} else {
+			this.setState({
+				items: newArray,
+			});
+		}
 		ls.set('items', newArray);
 	};
 
