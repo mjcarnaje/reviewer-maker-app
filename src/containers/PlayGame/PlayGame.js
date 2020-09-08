@@ -146,11 +146,53 @@ export class PlayGame extends Component {
 					/>
 				)}
 				{gameOver && (
-					<div>
-						<h1>{`${correctAnswered} / ${total}`}</h1>
-						<a href='/'>Go to Home</a>
-						<button onClick={this.playAgain}>Play Again</button>
-						<a href='/create-questions	'>Create More Question</a>
+					<div className='w-10/12 py-3 bg-gray-100 rounded'>
+						<h1 className='py-2 text-3xl font-semibold text-center font-poppins text-custom-primary '>
+							Quiz Results
+						</h1>
+						<table className='w-10/12 mx-auto my-2 table-auto font-poppins'>
+							<tbody>
+								<tr>
+									<td className='px-4 py-2 border '>Total Question</td>
+									<td className='px-4 py-2 border'>{`${total}`}</td>
+								</tr>
+								<tr>
+									<td className='px-4 py-2 border'>Correct</td>
+									<td className='px-4 py-2 border'>{`${correctAnswered}`}</td>
+								</tr>
+								<tr>
+									<td className='px-4 py-2 border'>Wrong</td>
+									<td className='px-4 py-2 border'>{`${
+										total - correctAnswered
+									}`}</td>
+								</tr>
+								<tr>
+									<td className='px-4 py-2 border'>Percentage</td>
+									<td className='px-4 py-2 border'>{`${(
+										(correctAnswered / total) *
+										100
+									).toFixed(2)}%`}</td>
+								</tr>
+								<tr>
+									<td className='px-4 py-2 font-medium border'>Total Score</td>
+									<td className='px-4 py-2 font-semibold border'>{`${correctAnswered} / ${total}`}</td>
+								</tr>
+							</tbody>
+						</table>
+						<div className='flex justify-center text-center text-white'>
+							<button
+								onClick={this.playAgain}
+								className='inline-block w-auto px-2 py-1 mx-2 my-1 rounded bg-custom-primary'
+							>
+								Play Again
+							</button>
+							<a
+								href='/create-questions'
+								className='inline-block w-auto px-2 py-1 mx-2 my-1 rounded bg-custom-primary'
+							>
+								Questions
+							</a>
+						</div>
 					</div>
 				)}
 			</div>
