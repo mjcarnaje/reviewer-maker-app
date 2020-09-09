@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import uniqid from 'uniqid';
 
-import AddButton from '../../components/UI/Button/AddButton/AddButton';
-import Questions from '../../components/Questions/Questions';
-import AddQuestion from '../../components/AddQuestion/AddQuestion';
-import Modal from '../../components/UI/Modal/Modal';
-import Spinner from '../../components/UI/Spinner/Spinner';
-import create_question from '../../assets/svg/create_question.svg';
+import AddButton from '../components/UI/AddButton';
+
+import BuildQuestion from '../components/Question';
+import AddQuestion from '../components/AddQuestion';
+import Modal from '../components/UI/Modal';
+import Spinner from '../components/UI/Spinner/Spinner';
+import create_question from '../assets/svg/create_question.svg';
 class CreateQuestions extends Component {
 	state = {
 		items: null,
@@ -80,6 +81,7 @@ class CreateQuestions extends Component {
 	};
 
 	render() {
+		const questions = this.state.items;
 		let spinner;
 		if (this.props.isLoading && !this.props.noQuestion) {
 			spinner = <Spinner />;
@@ -106,13 +108,18 @@ class CreateQuestions extends Component {
 				</Modal>
 				<div className='min-h-screen px-3 py-24 sm:px-10 md:px-24 lg:px-64'>
 					{spinner}
-					{this.state.items ? (
-						<Questions
-							questions={this.state.items}
-							deleted={this.deleteQuestion}
-							edited={this.editQuestion}
-						/>
-					) : null}
+					{questions &&
+						questions.map((el, index) => {
+							return (
+								<BuildQuestion
+									items={el}
+									key={el.id}
+									del={this.deleteQuestion}
+									count={index + 1}
+									edit={this.editQuestion}
+								/>
+							);
+						})}
 					<AddButton clicked={this.modalOpen} />
 				</div>
 			</React.Fragment>

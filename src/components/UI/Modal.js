@@ -1,7 +1,6 @@
 import React from 'react';
 
-const modal = (props) => {
-	const { show, modalClosed } = props;
+const modal = ({ show, modalClosed, children }) => {
 	const handleClick = (e) => {
 		if (e.target.classList.contains('bg-gray-700')) {
 			modalClosed();
@@ -15,7 +14,7 @@ const modal = (props) => {
 					onClick={handleClick}
 				>
 					<div className='p-6 bg-white rounded-md shadow-md z-200'>
-						{show && props.children}
+						{show && children}
 					</div>
 				</div>
 			)}

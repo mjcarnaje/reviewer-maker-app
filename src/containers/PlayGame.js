@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
-import GameQuestion from '../../components/GameQuestion/GameQuestion';
-import Spinner from '../../components/UI/Spinner/Spinner';
-import add_question from './../../assets/svg/add_question.svg';
-import start_question from './../../assets/svg/start_question.svg';
+import { Link } from 'react-router-dom';
+
+import GameQuestion from '../components/GameQuestion';
+import Spinner from '../components/UI/Spinner/Spinner';
+import add_question from './../assets/svg/add_question.svg';
+import start_question from './../assets/svg/start_question.svg';
 
 export class PlayGame extends Component {
 	state = {
@@ -198,12 +200,11 @@ export class PlayGame extends Component {
 							>
 								Play Again
 							</button>
-							<a
-								href='/create-questions'
-								className='inline-block w-auto px-2 py-1 mx-2 my-1 rounded md:my-2 md:mx-3 bg-custom-primary font-montserrat'
-							>
-								Questions
-							</a>
+							<Link to='/create-questions'>
+								<button className='w-auto px-2 py-1 mx-2 my-1 rounded btn md:my-2 md:mx-3 bg-custom-primary font-montserrat'>
+									Questions
+								</button>
+							</Link>
 						</div>
 					</div>
 				)}

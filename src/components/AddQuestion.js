@@ -139,13 +139,15 @@ class addQuestion extends Component {
 						</div>
 						<button
 							onClick={this.addChoiceClicked}
-							className='float-right px-3 py-2 my-1 text-xs text-white rounded font-poppins bg-custom-primary focus:outline-none hover:bg-indigo-400'>
+							className='float-right px-3 py-2 my-1 text-xs text-white rounded font-poppins bg-custom-primary focus:outline-none hover:bg-indigo-400'
+						>
 							+ Other choice
 						</button>
 					</div>
 					<button
 						onClick={this.handleSumbit}
-						className='block px-5 py-1 mx-auto my-1 text-base text-white rounded-full bg-custom-primary font-poppins focus:outline-none hover:bg-indigo-500'>
+						className='block px-5 py-1 mx-auto my-1 text-base text-white rounded-full bg-custom-primary font-poppins focus:outline-none hover:bg-indigo-500'
+					>
 						{this.props.editState ? 'Update' : 'Submit'}
 					</button>
 				</div>

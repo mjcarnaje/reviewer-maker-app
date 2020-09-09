@@ -1,12 +1,12 @@
 //node_module
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import ls from 'local-storage';
+import { Route, Switch } from 'react-router-dom';
+import localStorage from 'local-storage';
 //local module
 import Layout from './hoc/Layout/Layout';
-import Home from './containers/Home/Home';
-import CreateQuestions from './containers/CreateQuestions/CreateQuestions';
-import PlayGame from './containers/PlayGame/PlayGame';
+import Home from './containers/Home';
+import CreateQuestions from './containers/CreateQuestions';
+import PlayGame from './containers/PlayGame';
 
 class App extends Component {
 	state = {
@@ -15,11 +15,11 @@ class App extends Component {
 		noQuestion: false,
 	};
 	componentDidMount() {
-		const lsItems = ls.get('items');
+		const localStorageItems = localStorage.get('items');
 		this.setState({
 			isLoading: true,
 		});
-		if (lsItems.length === 0) {
+		if (localStorageItems.length === 0) {
 			this.setState({
 				isLoading: false,
 				items: [],
@@ -27,7 +27,7 @@ class App extends Component {
 			});
 		} else {
 			this.setState({
-				items: lsItems,
+				items: localStorageItems,
 				isLoading: false,
 			});
 		}
@@ -37,7 +37,7 @@ class App extends Component {
 			items: newArray,
 			noQuestion: false,
 		});
-		ls.set('items', newArray);
+		localStorage.set('items', newArray);
 	};
 	deleteQuestion = (newArray) => {
 		if (newArray.length === 0) {
@@ -50,42 +50,34 @@ class App extends Component {
 				items: newArray,
 			});
 		}
-		ls.set('items', newArray);
+		localStorage.set('items', newArray);
 	};
 
 	render() {
 		return (
-			<Router>
-				<div className='App'>
-					<Layout>
-						<Switch>
-							<Route path='/' exact component={Home} />
-							<Route
-								path='/quiz'
-								render={() => (
-									<PlayGame
-										items={this.state.items}
-										isLoading={this.state.isLoading}
-										noQuestion={this.state.noQuestion}
-									/>
-								)}
-							/>
-							<Route
-								path='/create-questions'
-								render={() => (
-									<CreateQuestions
-										items={this.state.items}
-										deleteQuestion={this.deleteQuestion}
-										updateQuestions={this.updateQuestions}
-										isLoading={this.state.isLoading}
-										noQuestion={this.state.noQuestion}
-									/>
-								)}
-							/>
-						</Switch>
-					</Layout>
-				</div>
-			</Router>
+			<Layout>
+				<Switch>
+					<Route path='/' exact>
+						<Home />
+					</Route>
+					<Route path='/quiz'>
+						<PlayGame
+							items={this.state.items}
+							isLoading={this.state.isLoading}
+							noQuestion={this.state.noQuestion}
+						/>
+					</Route>
+					<Route path='/create-questions'>
+						<CreateQuestions
+							items={this.state.items}
+							deleteQuestion={this.deleteQuestion}
+							updateQuestions={this.updateQuestions}
+							isLoading={this.state.isLoading}
+							noQuestion={this.state.noQuestion}
+						/>
+					</Route>
+				</Switch>
+			</Layout>
 		);
 	}
 }
