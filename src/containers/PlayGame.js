@@ -123,10 +123,7 @@ export class PlayGame extends Component {
 						className='w-10/12 px-4 py-6 m-auto sm:w-8/12 md:w-6/12 lg:w-5/12'
 					/>
 					<Link to='/create-questions'>
-						<button
-							href='/create-questions'
-							className='inline-block px-3 py-2 mt-3 text-lg text-white border-none rounded btn font-poppins bg-custom-primary hover:bg-indigo-400 focus:outline-none'
-						>
+						<button className='px-3 py-2 mt-3 text-lg text-white border-none rounded btn font-poppins bg-custom-primary hover:bg-indigo-400 focus:outline-none'>
 							Create Question/s
 						</button>
 					</Link>

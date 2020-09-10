@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 
 export class Header extends Component {
 	state = {
@@ -16,13 +16,12 @@ export class Header extends Component {
 
 		return (
 			<header className='absolute top-0 left-0 z-50 w-full bg-white shadow sm:flex sm:justify-between sm:px-4 sm:py-3 lg:px-12'>
-				<nav className='flex items-center justify-center px-4 py-3 shadow sm:p-0 sm:shadow-none'>
-					<a
-						href='/'
-						className='flex-1 text-3xl font-berkshire text-custom-primary'
-					>
-						Reviewer
-					</a>
+				<nav className='flex items-center justify-between px-4 py-3 shadow sm:p-0 sm:shadow-none'>
+					<Link to='/'>
+						<button className='flex-1 text-3xl btn font-berkshire text-custom-primary'>
+							Reviewer
+						</button>
+					</Link>
 					<div className='sm:hidden'>
 						<button
 							className='text-custom-primary focus:text-indigo-400 focus:outline-none'
