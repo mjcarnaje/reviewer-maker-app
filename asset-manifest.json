@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/reviewer-maker-app/static/css/main.4b6da885.chunk.css",
-    "main.js": "/reviewer-maker-app/static/js/main.83466b2d.chunk.js",
-    "main.js.map": "/reviewer-maker-app/static/js/main.83466b2d.chunk.js.map",
+    "main.js": "/reviewer-maker-app/static/js/main.4ae26f10.chunk.js",
+    "main.js.map": "/reviewer-maker-app/static/js/main.4ae26f10.chunk.js.map",
     "runtime-main.js": "/reviewer-maker-app/static/js/runtime-main.29455b6d.js",
     "runtime-main.js.map": "/reviewer-maker-app/static/js/runtime-main.29455b6d.js.map",
     "static/js/2.649c3ade.chunk.js": "/reviewer-maker-app/static/js/2.649c3ade.chunk.js",
     "static/js/2.649c3ade.chunk.js.map": "/reviewer-maker-app/static/js/2.649c3ade.chunk.js.map",
     "index.html": "/reviewer-maker-app/index.html",
-    "precache-manifest.9ddcad6b1f488cb0d95ce65d9a5dd2af.js": "/reviewer-maker-app/precache-manifest.9ddcad6b1f488cb0d95ce65d9a5dd2af.js",
+    "precache-manifest.6d85d41ab92d92cf1bfbe9b8f663acc6.js": "/reviewer-maker-app/precache-manifest.6d85d41ab92d92cf1bfbe9b8f663acc6.js",
     "service-worker.js": "/reviewer-maker-app/service-worker.js",
     "static/css/main.4b6da885.chunk.css.map": "/reviewer-maker-app/static/css/main.4b6da885.chunk.css.map",
     "static/js/2.649c3ade.chunk.js.LICENSE.txt": "/reviewer-maker-app/static/js/2.649c3ade.chunk.js.LICENSE.txt",
@@ -21,6 +21,6 @@
     "static/js/runtime-main.29455b6d.js",
     "static/js/2.649c3ade.chunk.js",
     "static/css/main.4b6da885.chunk.css",
-    "static/js/main.83466b2d.chunk.js"
+    "static/js/main.4ae26f10.chunk.js"
   ]
 }

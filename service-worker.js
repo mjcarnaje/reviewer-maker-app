@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/reviewer-maker-app/precache-manifest.9ddcad6b1f488cb0d95ce65d9a5dd2af.js"
+  "/reviewer-maker-app/precache-manifest.6d85d41ab92d92cf1bfbe9b8f663acc6.js"
 );
 
 self.addEventListener('message', (event) => {
