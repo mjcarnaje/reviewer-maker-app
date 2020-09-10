@@ -61,9 +61,9 @@ class addQuestion extends Component {
 		const choicesCopy = [...this.state.choices];
 		const choiceIndex = choicesCopy.findIndex((el) => text === el);
 		choicesCopy[choiceIndex] = e.target.value;
-
+		const filtered = choicesCopy.filter((el) => el);
 		this.setState({
-			choices: choicesCopy,
+			choices: filtered,
 		});
 	};
 	render() {

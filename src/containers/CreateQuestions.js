@@ -24,14 +24,10 @@ class CreateQuestions extends Component {
 		return null;
 	}
 	updateQuestions = ({ question, correct, choices, curChoice, id }) => {
-		let newArray = [];
-		let questionIndex;
+		let newArray = [...this.state.items] || [];
+		const questionIndex = this.state.items.findIndex((el) => el.id === id);
 		const filteredChoices = choices.filter((el) => el);
 
-		if (this.state.items) {
-			newArray = [...this.state.items];
-			questionIndex = this.state.items.findIndex((el) => el.id === id);
-		}
 		if (!id) {
 			const newQuestion = {
 				id: uniqid(),
