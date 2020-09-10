@@ -19,7 +19,7 @@ class App extends Component {
 		this.setState({
 			isLoading: true,
 		});
-		if (localStorageItems.length === 0) {
+		if (localStorageItems === null) {
 			this.setState({
 				isLoading: false,
 				items: [],

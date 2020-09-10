@@ -122,12 +122,14 @@ export class PlayGame extends Component {
 						alt='add_question'
 						className='w-10/12 px-4 py-6 m-auto sm:w-8/12 md:w-6/12 lg:w-5/12'
 					/>
-					<a
-						href='/create-questions'
-						className='inline-block px-3 py-2 mt-3 text-lg text-white border-none rounded font-poppins bg-custom-primary hover:bg-indigo-400 focus:outline-none'
-					>
-						Create Question/s
-					</a>
+					<Link to='/create-questions'>
+						<button
+							href='/create-questions'
+							className='inline-block px-3 py-2 mt-3 text-lg text-white border-none rounded btn font-poppins bg-custom-primary hover:bg-indigo-400 focus:outline-none'
+						>
+							Create Question/s
+						</button>
+					</Link>
 				</div>
 			);
 		} else {
