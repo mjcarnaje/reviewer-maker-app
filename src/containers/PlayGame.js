@@ -10,9 +10,9 @@ export class PlayGame extends Component {
 	state = {
 		questions: null,
 		currentQuestion: null,
-		correctAnswered: 0,
-		questionCounter: 0,
 		total: 0,
+		questionCounter: 0,
+		correctAnswered: 0,
 		gameOver: false,
 		isPlayAgain: false,
 	};
@@ -149,7 +149,7 @@ export class PlayGame extends Component {
 		}
 
 		return (
-			<div className='flex items-center justify-center w-screen h-screen'>
+			<div className='flex items-center justify-center w-full h-screen'>
 				{total === 0 && spinner}
 				{total !== 0 && !gameOver && (
 					<GameQuestion

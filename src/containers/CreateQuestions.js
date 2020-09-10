@@ -26,6 +26,8 @@ class CreateQuestions extends Component {
 	updateQuestions = ({ question, correct, choices, curChoice, id }) => {
 		let newArray = [];
 		let questionIndex;
+		const filteredChoices = choices.filter((el) => el);
+
 		if (this.state.items) {
 			newArray = [...this.state.items];
 			questionIndex = this.state.items.findIndex((el) => el.id === id);
@@ -34,7 +36,7 @@ class CreateQuestions extends Component {
 			const newQuestion = {
 				id: uniqid(),
 				question: question,
-				choices: [...choices, curChoice],
+				choices: [...filteredChoices, curChoice],
 				answer: correct,
 			};
 			newArray.push({ ...newQuestion });
@@ -42,7 +44,7 @@ class CreateQuestions extends Component {
 			newArray[questionIndex] = {
 				id: id,
 				question: question,
-				choices: [...choices, curChoice],
+				choices: [...filteredChoices, curChoice],
 				answer: correct,
 			};
 		}

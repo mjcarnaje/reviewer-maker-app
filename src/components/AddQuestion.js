@@ -44,16 +44,16 @@ class addQuestion extends Component {
 		}
 	};
 	addChoiceClicked = () => {
-		const choicesCopy = this.state.choices.slice();
+		const choices = [...this.state.choices];
 		const currentChoice = this.state.curChoice;
 		if (currentChoice !== '') {
-			choicesCopy.push(currentChoice);
+			choices.push(currentChoice);
 			this.textInput.focus();
 		} else {
 			return;
 		}
 		this.setState({
-			choices: choicesCopy,
+			choices: choices,
 			curChoice: '',
 		});
 	};
