@@ -1,17 +1,17 @@
 {
   "files": {
     "main.css": "/reviewer-maker-app/static/css/main.4b6da885.chunk.css",
-    "main.js": "/reviewer-maker-app/static/js/main.773aa076.chunk.js",
-    "main.js.map": "/reviewer-maker-app/static/js/main.773aa076.chunk.js.map",
+    "main.js": "/reviewer-maker-app/static/js/main.749128ca.chunk.js",
+    "main.js.map": "/reviewer-maker-app/static/js/main.749128ca.chunk.js.map",
     "runtime-main.js": "/reviewer-maker-app/static/js/runtime-main.29455b6d.js",
     "runtime-main.js.map": "/reviewer-maker-app/static/js/runtime-main.29455b6d.js.map",
-    "static/js/2.bddc9f27.chunk.js": "/reviewer-maker-app/static/js/2.bddc9f27.chunk.js",
-    "static/js/2.bddc9f27.chunk.js.map": "/reviewer-maker-app/static/js/2.bddc9f27.chunk.js.map",
+    "static/js/2.649c3ade.chunk.js": "/reviewer-maker-app/static/js/2.649c3ade.chunk.js",
+    "static/js/2.649c3ade.chunk.js.map": "/reviewer-maker-app/static/js/2.649c3ade.chunk.js.map",
     "index.html": "/reviewer-maker-app/index.html",
-    "precache-manifest.150eca075a8abfd3d4586cb352e7ce39.js": "/reviewer-maker-app/precache-manifest.150eca075a8abfd3d4586cb352e7ce39.js",
+    "precache-manifest.e53c7770df7b72e5f78b38d0ad0d0dfd.js": "/reviewer-maker-app/precache-manifest.e53c7770df7b72e5f78b38d0ad0d0dfd.js",
     "service-worker.js": "/reviewer-maker-app/service-worker.js",
     "static/css/main.4b6da885.chunk.css.map": "/reviewer-maker-app/static/css/main.4b6da885.chunk.css.map",
-    "static/js/2.bddc9f27.chunk.js.LICENSE.txt": "/reviewer-maker-app/static/js/2.bddc9f27.chunk.js.LICENSE.txt",
+    "static/js/2.649c3ade.chunk.js.LICENSE.txt": "/reviewer-maker-app/static/js/2.649c3ade.chunk.js.LICENSE.txt",
     "static/media/add_question.svg": "/reviewer-maker-app/static/media/add_question.1fb5c281.svg",
     "static/media/create_question.svg": "/reviewer-maker-app/static/media/create_question.8169a436.svg",
     "static/media/start_question.svg": "/reviewer-maker-app/static/media/start_question.7d8bfcef.svg",
@@ -19,8 +19,8 @@
   },
   "entrypoints": [
     "static/js/runtime-main.29455b6d.js",
-    "static/js/2.bddc9f27.chunk.js",
+    "static/js/2.649c3ade.chunk.js",
     "static/css/main.4b6da885.chunk.css",
-    "static/js/main.773aa076.chunk.js"
+    "static/js/main.749128ca.chunk.js"
   ]
 }
