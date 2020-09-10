@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "d8b9e19a60a465bd1452fa6331f53532",
+    "revision": "37c3a314938e65100d007d7a02deafff",
     "url": "/reviewer-maker-app/index.html"
   },
   {
-    "revision": "ef43ca850e3637bc1b95",
+    "revision": "d6df480deaaa8866ba23",
     "url": "/reviewer-maker-app/static/css/main.4b6da885.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/reviewer-maker-app/static/js/2.3c505626.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "ef43ca850e3637bc1b95",
-    "url": "/reviewer-maker-app/static/js/main.d411bd93.chunk.js"
+    "revision": "d6df480deaaa8866ba23",
+    "url": "/reviewer-maker-app/static/js/main.cc549f4c.chunk.js"
   },
   {
     "revision": "147ac37545bd0beafddd",
